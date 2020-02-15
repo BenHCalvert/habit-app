@@ -1,6 +1,6 @@
 # Create React Express App
 
-## Heroku URLS  
+## Heroku URLs  
   [master branch](https://habit-app-2020.herokuapp.com/)
   
   [staging branch](https://habit-stagingbranch-2020.herokuapp.com/)
