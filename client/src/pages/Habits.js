@@ -66,7 +66,7 @@ function Habits() {
             <h3> No Resutls to Display</h3>
           )}
       </Row>
-
+      <AddBtn></AddBtn>
     </Container>
   );
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Habits from "./pages/Habits";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import 'materialize-css/dist/css/materialize.min.css';
 
 function App() {
     return (
