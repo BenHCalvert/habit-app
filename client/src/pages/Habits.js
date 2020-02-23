@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Input from "../components/Input";
 import AddBtn from "../components/AddButton";
+import Nav from "../components/Nav";
 
 function Habits() {
   const [habits, setHabits] = useState([]);
@@ -40,6 +41,7 @@ function Habits() {
 
   return (
     <Container fluid>
+      <Nav></Nav>
       <Row>
         <h1>Habits you have selected</h1>
         <form>
