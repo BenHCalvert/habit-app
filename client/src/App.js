@@ -9,7 +9,7 @@ function App() {
           <Switch>
             {/* need to change default route to login page */}
             <Route exact path="/" component={Habits}/>
-            <Route exact path="/habits" component={Habits}/>
+            <Route exact path="/habits" component={Habits}/>            
           </Switch>
         </div>
       </Router>

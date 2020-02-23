@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Input from "../components/Input";
+import AddBtn from "../components/AddButton";
 
 function Habits() {
   const [habits, setHabits] = useState([]);
@@ -14,27 +15,27 @@ function Habits() {
   }, [])
 
   function loadHabits() {
-   API.getHabit()
-    .then(res =>
-      setHabits(res.data)
-    ) 
-    .catch(err => console.log("error in loadHabit", err));
+    API.getHabit()
+      .then(res =>
+        setHabits(res.data)
+      )
+      .catch(err => console.log("error in loadHabit", err));
   };
 
   // grabs values on change and update onject
   function handleInputChange(e) {
     const { habitName, value } = e.target;
-    setFormObject({...formObject, [habitName]: value})
+    setFormObject({ ...formObject, [habitName]: value })
   };
 
   // takes object and calls save endpoint when form is submitted
   // function handleFormSubmit(e) {
-    // e.preventDefault();
-    // may need to expand this logic out
-    // if (formObject.habitName) {
-      // API.saveHabit
+  // e.preventDefault();
+  // may need to expand this logic out
+  // if (formObject.habitName) {
+  // API.saveHabit
 
-    // }
+  // }
   // }
 
   return (
@@ -51,20 +52,21 @@ function Habits() {
       </Row>
       <Row>
 
-      {habits.length ? (
-        <List>
-          <ListItem key={habits._id}>
-            <Link to={"habits/" + habits._id}>
-              <strong>
-                {habits.habitName}
-              </strong>
-            </Link>
-          </ListItem>
-        </List>
-    ) : (
-      <h3> No Resutls to Display</h3>
-    )}
+        {habits.length ? (
+          <List>
+            <ListItem key={habits._id}>
+              <Link to={"habits/" + habits._id}>
+                <strong>
+                  {habits.habitName}
+                </strong>
+              </Link>
+            </ListItem>
+          </List>
+        ) : (
+            <h3> No Resutls to Display</h3>
+          )}
       </Row>
+
     </Container>
   );
 }
