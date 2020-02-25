@@ -6,6 +6,8 @@ import { Col, Row, Container } from "../components/Grid";
 import Input from "../components/Input";
 import DeleteBtn from "../components/DeleteBtn";
 import SubmitBtn from "../components/SubmitBtn";
+import AddBtn from "../components/AddButton";
+import Nav from "../components/Nav";
 
 function Habits() {
   const [habitState, setHabitState] = useState([]);
@@ -17,11 +19,11 @@ function Habits() {
   }, [])
 
   function loadHabits() {
-   API.getHabit()
-    .then(res =>
-      setHabitState(res.data)
-    ) 
-    .catch(err => console.log("error in loadHabit", err));
+    API.getHabit()
+      .then(res =>
+        setHabits(res.data)
+      )
+      .catch(err => console.log("error in loadHabit", err));
   };
 
   function deleteHabit(id) {
@@ -33,7 +35,7 @@ function Habits() {
   // grabs values on change and update onject
   function handleInputChange(e) {
     const { habitName, value } = e.target;
-    setFormObject({...formObject, [habitName]: value})
+    setFormObject({ ...formObject, [habitName]: value })
   };
 
   // takes object and calls save endpoint when form is submitted
@@ -48,9 +50,18 @@ function Habits() {
         .catch(err => console.log(err));
     }
   };
+  // function handleFormSubmit(e) {
+  // e.preventDefault();
+  // may need to expand this logic out
+  // if (formObject.habitName) {
+  // API.saveHabit
+
+  // }
+  // }
 
   return (
     <Container fluid>
+      <Nav></Nav>
       <Row>
         <h1>Habits you have selected</h1>
         <form>
@@ -74,30 +85,21 @@ function Habits() {
       </Row>
       <Row>
 
-{console.log("habit.length",habitState.length)};
-
-      {habitState === undefined ? (
-        <List>
-
-          {habitState.map(e => (
-            <ListItem key={e._id}>
-              <List to={"/habits/" + e._id}>
+        {habits.length ? (
+          <List>
+            <ListItem key={habits._id}>
+              <Link to={"habits/" + habits._id}>
                 <strong>
-                  {e.habitName}
+                  {habits.habitName}
                 </strong>
-              </List>
-              <DeleteBtn onClick={() => deleteHabit(e._id)} />
+              </Link>
             </ListItem>
-          ))}
-        </List>
-    ) : (
-<>
-      {console.log("habits",habitState)}
-      <h3> No Resutls to Display</h3>
-</>
-    )}
-      {console.log("habits",typeof habits)}
+          </List>
+        ) : (
+            <h3> No Resutls to Display</h3>
+          )}
       </Row>
+      <AddBtn></AddBtn>
     </Container>
   );
 }
