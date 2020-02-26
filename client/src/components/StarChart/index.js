@@ -23,3 +23,5 @@ export function StarChart() {
 
 export default StarChart;
 
+// alt: check this out -> https://www.npmjs.com/package/css-star-rating
+
