@@ -10,8 +10,8 @@ import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
 
 function Habits() {
-  const [habitState, setHabitState] = useState([]);
-  console.log("Habits func - habits",habitState);
+  const [habits, setHabitState] = useState([]);
+  // const [habits, setHabitState] = useState([]);
   const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
@@ -19,9 +19,12 @@ function Habits() {
   }, [])
 
   function loadHabits() {
-    API.getHabit()
-      .then(res =>
-        setHabits(res.data)
+    API.getHabits()
+      .then(res => {
+        setHabitState(res.data);
+        console.log("state",res.data);
+        console.log("state2",res);
+        }
       )
       .catch(err => console.log("error in loadHabit", err));
   };
@@ -80,6 +83,7 @@ function Habits() {
             disabled={!(formObject.habitName)}
             onClick={handleFormSubmit}
           >
+            Submit New Habit
           </SubmitBtn>
         </form>
       </Row>
@@ -99,7 +103,7 @@ function Habits() {
             <h3> No Resutls to Display</h3>
           )}
       </Row>
-      <AddBtn></AddBtn>
+      <AddBtn/>
     </Container>
   );
 }
