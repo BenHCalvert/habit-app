@@ -6,6 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Input from "../components/Input";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
+import StarChart from '../components/StarChart'
 
 function Habits() {
   const [habits, setHabits] = useState([]);
@@ -68,6 +69,7 @@ function Habits() {
             <h3> No Resutls to Display</h3>
           )}
       </Row>
+      <StarChart></StarChart>
       <AddBtn></AddBtn>
     </Container>
   );
