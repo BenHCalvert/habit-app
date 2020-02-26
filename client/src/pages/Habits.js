@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { List, ListItem } from "../components/List";
-import API from "../utils/API";
 import { Link } from "react-router-dom";
+
+import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
+import { List, ListItem } from "../components/List";
 import Input from "../components/Input";
 import DeleteBtn from "../components/DeleteBtn";
 import SubmitBtn from "../components/SubmitBtn";
@@ -23,7 +24,7 @@ function Habits() {
       .then(res => {
         setHabitState(res.data);
         console.log("state",res.data);
-        console.log("state2",res);
+        console.log("habits",habits);
         }
       )
       .catch(err => console.log("error in loadHabit", err));
@@ -88,16 +89,17 @@ function Habits() {
         </form>
       </Row>
       <Row>
-
         {habits.length ? (
           <List>
-            <ListItem key={habits._id}>
-              <Link to={"habits/" + habits._id}>
-                <strong>
-                  {habits.habitName}
-                </strong>
-              </Link>
-            </ListItem>
+            {habits.map(habit => (
+              <ListItem key={habit._id}>
+                <Link to={"habits/" + habit._id}>
+                  <strong>
+                    {habit.habitName}
+                  </strong>
+                </Link>
+              </ListItem>
+            ))}
           </List>
         ) : (
             <h3> No Resutls to Display</h3>
