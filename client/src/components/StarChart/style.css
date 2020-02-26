@@ -32,7 +32,7 @@ body{
     display         : block;
     float           : right;
     position        : relative;
-    background      : url;
+    background      : url('star-off.svg');
     background-size : contain;
   }
   
@@ -41,7 +41,7 @@ body{
     display         : block;
     width           : 1.5em;
     height          : 1.5em;
-    background      : url;
+    background      : url('star-on.svg');
     background-size : contain;
     opacity         : 0;
     transition      : opacity 0.2s linear;
