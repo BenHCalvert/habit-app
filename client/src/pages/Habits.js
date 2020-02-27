@@ -6,7 +6,8 @@ import { Col, Row, Container } from "../components/Grid";
 import Input from "../components/Input";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
-import StarChart from '../components/StarChart'
+import StarChart from '../components/StarChart';
+import Modal from '../components/Modal'
 
 function Habits() {
   const [habits, setHabits] = useState([]);
@@ -43,6 +44,7 @@ function Habits() {
   return (
     <Container fluid>
       <Nav></Nav>
+      
       <Row>
         <h1>Habits you have selected</h1>
         <form>
@@ -69,8 +71,8 @@ function Habits() {
             <h3> No Resutls to Display</h3>
           )}
       </Row>
-      <StarChart></StarChart>
-      <AddBtn></AddBtn>
+      <StarChart/>
+      <Modal/>
     </Container>
   );
 }

@@ -6,6 +6,8 @@ export function StarChart() {
     <React.Fragment>
     <span class="starRating">
         <input name="group1" type="radio" checked />
+        <input id="rating6" type="radio" name="rating" value="5"></input>
+        <label for="rating6">5</label>
         <input id="rating5" type="radio" name="rating" value="5"></input>
         <label for="rating5">5</label>
         <input id="rating4" type="radio" name="rating" value="4"></input>
