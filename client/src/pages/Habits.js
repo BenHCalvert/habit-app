@@ -55,12 +55,14 @@ function Habits() {
     }
   };
   // function handleFormSubmit(e) {
-  // e.preventDefault();
-  // may need to expand this logic out
-  // if (formObject.habitName) {
-  // API.saveHabit
+    // e.preventDefault();
+    // may need to expand this logic out
+    // if (formObject.habitName) {
+    // API.saveHabit({
 
-  // }
+    // })
+
+    // }
   // }
 
   return (
