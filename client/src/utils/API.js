@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Gets all habits
-  getHabit: function() {
+  getHabits: function() {
     return axios.get("/api/habits");
   },
   // Gets the habits with the given id
