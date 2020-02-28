@@ -13,13 +13,15 @@ const habitSeed = [
     date: new Date(Date.now()),
     userId: "userId1",
     habitName: "Picking ones nose",
-    dayTotal: 14
+    dayTotal: 14,
+    weight: 1 
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     habitName: "Picking ones friends nose",
-    dayTotal: 14
+    dayTotal: 14,
+    weight: 2 
   }
 ];
 
