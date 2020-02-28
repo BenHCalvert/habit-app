@@ -6,10 +6,10 @@ export function Nav() {
         <React.Fragment>
             <Router>
                 <nav>
-                    <div className="nav-wrapper">
-                        <a href="#!" className="brand-logo">Logo</a>
-                        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-                        <ul className="right hide-on-med-and-down">
+                    <div class="nav-wrapper">
+                        <a href="#!" class="brand-logo">Logo</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
                             {/* TODO: How do we link here with React Router? */}
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/">Habits</Link></li>
@@ -19,7 +19,7 @@ export function Nav() {
                 </nav>
 
                 {/* TODO: How do we link here with React Router? */}
-                <ul className="sidenav" id="mobile-demo">
+                <ul class="sidenav" id="mobile-demo">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/">Habits</Link></li>
                     <li><Link to="/">Rewards</Link></li>
