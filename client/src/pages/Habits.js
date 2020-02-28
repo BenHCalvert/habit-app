@@ -5,14 +5,13 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import Input from "../components/Input";
-import DeleteBtn from "../components/DeleteBtn";
-import SubmitBtn from "../components/SubmitBtn";
+// import DeleteBtn from "../components/DeleteBtn";
+// import SubmitBtn from "../components/SubmitBtn";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
 
 function Habits() {
   const [habits, setHabitState] = useState([]);
-  // const [habits, setHabitState] = useState([]);
   const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
@@ -23,8 +22,9 @@ function Habits() {
     API.getHabits()
       .then(res => {
         setHabitState(res.data);
-        console.log("state",res.data);
-        console.log("habits",habits);
+        console.log("res.data",res.data);
+        // this works this way
+        console.log("state - habits",habits);
         }
       )
       .catch(err => console.log("error in loadHabit", err));
@@ -37,34 +37,38 @@ function Habits() {
   }
 
   // grabs values on change and update onject
+  // name is the name of the variable passed in
+  // which is evaluated as the variable name in the [] so that that prop
+  // set is the value of variable. and then the value is assigned
   function handleInputChange(e) {
-    const { habitName, value } = e.target;
-    setFormObject({ ...formObject, [habitName]: value })
+    const { name, value } = e.target;
+    setFormObject({ ...formObject, [name]: value })
   };
 
   // takes object and calls save endpoint when form is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.habitName && true) {
+      console.log("in handleFormSubmit");
+    if (formObject.habitName && formObject.weight) {
+      console.log("handleFormSubmit about save",formObject);
       API.saveHabit({
+        date: new Date(Date.now()),
+        userId: "userId1",
         habitName: formObject.habitName,
-        weight: formObject.weight,
+        // dayTotal: formObject.days,
+        dayTotal: 14,
+        weight: formObject.weight
       })
-        .then(res => loadHabits())
-        .catch(err => console.log(err));
+        .then(res => {
+          console.log("save done",res);
+          loadHabits()
+        })
+        .catch(err => console.log("error in handleFormSubmit",err));
     }
   };
-  // function handleFormSubmit(e) {
-    // e.preventDefault();
-    // may need to expand this logic out
-    // if (formObject.habitName) {
-    // API.saveHabit({
 
-    // })
-
-    // }
-  // }
-
+  console.log("habits : ",habits);
+  // render function
   return (
     <Container fluid>
       <Nav></Nav>
@@ -82,12 +86,13 @@ function Habits() {
             name="weight"
             placeholder="Weight (required)"
           />
-          <SubmitBtn
-            disabled={!(formObject.habitName)}
-            onClick={handleFormSubmit}
-          >
-            Submit New Habit
-          </SubmitBtn>
+          <AddBtn
+            // disabled={!(formObject.habitName) && !(formObject.weight)}
+            // onclicky is a name which is defined (map) in the addBtn component
+            // onClicky={(e) =>{ console.log("hey cool"); e.preventDefault(); handleFormSubmit(); }}
+            onClicky={(e) =>{ handleFormSubmit(e); }}
+            
+          />
         </form>
       </Row>
       <Row>
@@ -107,7 +112,6 @@ function Habits() {
             <h3> No Resutls to Display</h3>
           )}
       </Row>
-      <AddBtn/>
     </Container>
   );
 }

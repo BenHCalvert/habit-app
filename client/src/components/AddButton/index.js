@@ -1,9 +1,10 @@
 import React from "react";
 
-export function AddBtn() {
+export function AddBtn(props) {
+
   return (
     // round button with plus
-    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <button className="btn-floating btn-large waves-effect waves-light red" onClick={props.onClicky}><i className="material-icons">add</i></button>
   );
 }
 
