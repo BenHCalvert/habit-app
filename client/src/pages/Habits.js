@@ -10,7 +10,8 @@ import SubmitBtn from "../components/SubmitBtn";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
-import Modal from '../components/Modal'
+import Modal from '../components/Modal';
+import ActionBtn from '../components/actionBtn'
 
 function Habits() {
   const [habits, setHabitState] = useState([]);
@@ -24,9 +25,9 @@ function Habits() {
   function loadHabits() {
     API.getHabits()
       .then(res => {
-        setHabitState(res.data);
         console.log("state",res.data);
         console.log("habits",habits);
+        setHabitState(res.data);
         }
       )
       .catch(err => console.log("error in loadHabit", err));
