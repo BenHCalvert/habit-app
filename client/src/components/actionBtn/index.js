@@ -1,23 +1,18 @@
-import React from 'react';
-import { Container, Button, Link } from 'react-floating-action-button';
+import React from "react";
 
 export function ActionBtn() {
     return (
-        <Container>
-            <Link href="#"
-                tooltip="Add Habit"
-                icon="far fa-sticky-note" />
-            <Link href="#"
-                tooltip="Add Reward"
-                icon="far fa-sticky-note" />
-                className="fab-item btn btn-link btn-lg text-white"
-            <Button
-                tooltip="The big plus button!"
-                icon="fas fa-plus"
-                rotate={true}
-                onClick={() => alert('FAB Rocks!')} />
-        </Container>
-    )
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red" >
+                <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating green"><i class="material-icons">event</i></a></li>
+                <li><a class="btn-floating yellow darken-1"><i class="material-icons">free_breakfast</i></a></li>
+            </ul>
+        </div>
+
+    );
 }
 
 export default ActionBtn;
