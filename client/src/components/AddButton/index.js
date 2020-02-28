@@ -3,7 +3,7 @@ import React from "react";
 export function AddBtn() {
   return (
     // round button with plus
-    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <a className="btn-floating btn-large waves-effect waves-light red modal-trigger" data-target='modal1'><i className="material-icons">add</i></a>
   );
 }
 
