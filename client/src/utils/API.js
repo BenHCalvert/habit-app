@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Gets all habits
-  getHabit: function() {
+  getHabits: function() {
     return axios.get("/api/habits");
   },
   // Gets the habits with the given id
@@ -18,7 +18,7 @@ export default {
     return axios.post("/api/habits", habitData);
   },
   // Gets all rewards
-  getReward: function() {
+  getRewards: function() {
     return axios.get("/api/rewards");
   },
   // Gets the rewards with the given id

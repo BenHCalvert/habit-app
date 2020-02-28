@@ -4,7 +4,9 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Input from "../components/Input";
-import AddBtn from "../components/AddButton";
+// using btn tied to database AddButton is tied to model
+import AddBtnModel from "../components/AddButton";
+import AddBtn from "../components/AddBtn";
 import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
 import Modal from '../components/Modal'
@@ -18,63 +20,97 @@ function Habits() {
   }, [])
 
   function loadHabits() {
-    API.getHabit()
+    API.getHabits()
       .then(res =>
         setHabits(res.data)
       )
       .catch(err => console.log("error in loadHabit", err));
   };
 
+  function deleteHabit(id) {
+    API.deleteHabit(id)
+    .then(res => loadHabits())
+    .catch(err => console.log(err));
+  }
   // grabs values on change and update onject
+  // name is the name of the variable passed in
+  // which is evaluated as the variable name in the [] so that that prop
+  // set is the value of variable. and then the value is assigned
   function handleInputChange(e) {
-    const { habitName, value } = e.target;
-    setFormObject({ ...formObject, [habitName]: value })
+    const { name, value } = e.target;
+    setFormObject({ ...formObject, [name]: value })
   };
 
-  // takes object and calls save endpoint when form is submitted
-  // function handleFormSubmit(e) {
-  // e.preventDefault();
-  // may need to expand this logic out
-  // if (formObject.habitName) {
-  // API.saveHabit
+    // takes object and calls save endpoint when form is submitted
+  function handleFormSubmit(event) {
+    event.preventDefault();
+      console.log("in handleFormSubmit");
+    if (formObject.habitName && formObject.weight) {
+      console.log("handleFormSubmit about save",formObject);
+      API.saveHabit({
+        date: new Date(Date.now()),
+        userId: "userId1",
+        habitName: formObject.habitName,
+        dayTotal: 14,
+        weight: formObject.weight
+      })
+        .then(res => {
+          console.log("save done",res);
+          loadHabits()
+        })
+        .catch(err => console.log("error in handleFormSubmit",err));
+    }
+  };
 
-  // }
-  // }
+// debug
+console.log("habits : ", habits);
 
+// render function
   return (
     <Container fluid>
       <Nav></Nav>
-      
       <Row>
         <h1>Habits you have selected</h1>
         <form>
-          <Input
+          Enter Habit:<Input
             onChange={handleInputChange}
             name="habitName"
             placeholder="Habit (required)"
           />
+
+            Enter Weight of Habit<Input
+            onChange={handleInputChange}
+            name="weight"
+            placeholder="Weight (required)"
+          />
+          <AddBtn
+            // disabled={!(formObject.habitName) && !(formObject.weight)}
+            onClicky={(e) => {handleFormSubmit(e)}}
+          />
         </form>
       </Row>
       <Row>
-
         {habits.length ? (
           <List>
-            <ListItem key={habits._id}>
-              <Link to={"habits/" + habits._id}>
-                <strong>
-                  {habits.habitName}
-                </strong>
-              </Link>
-            </ListItem>
+            {habits.map(habit => (
+              <ListItem key={habit._id}>
+                <Link to={"habits/" + habit._id}>
+                  <strong>
+                    {habit.habitName}
+                  </strong>
+                </Link>
+              </ListItem>
+            ))}
           </List>
         ) : (
-            <h3> No Resutls to Display</h3>
+            <h3> No habits yet specified</h3>
           )}
       </Row>
-
-      <AddBtn></AddBtn>
-      <StarChart/>
-      <Modal/>
+      <Row>
+        <StarChart/>
+        <AddBtnModel/>
+        <Modal/>
+      </Row>
 
 
     </Container>
