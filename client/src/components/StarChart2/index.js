@@ -1,13 +1,16 @@
-import React from "react";
-import GoldStar from "./goldStar.png";
+import React, { useState } from "react";
+import GoldStar from '../GoldStar';
+import DayOfWk from '../DayOfWk';
 
-// **************************8
+// initially set the element to be the day of the week
+const element = useState(<DayOfWk/>);
 
-// function addStar() {
-//     e.preventDefault();
-//     console.log('Click');
-// }
-
+// when the element is clicked on, swap DayOfWk for GoldStar
+function selector() {
+    if (click = true){
+        element = <GoldStar/>
+    }
+}
 
 export function StarChart2() {
     return (
@@ -18,28 +21,28 @@ export function StarChart2() {
                 </div>
                 <div className="row">
                     {/* 7 days go here */}
-                    <div className="col s1" data-value='Su'>
-                        <div visible={false}></div>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar} visible={true}></img>
+                    <div className="col s1" day='Su'>
+                        {element}
                     </div>
-                    <div className="col s1" data-value='M'>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar}></img>
+                    <div className="col s1" day='Mo'>
+                        {element}
                     </div>
-                    <div className="col s1" data-value='T'>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar}></img>
+                    <div className="col s1" day='Tu'>
+                        {element}
                     </div>
-                    <div className="col s1" data-value='W'>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar}></img>
+                    <div className="col s1" day='We'>
+                        {element}
                     </div>
-                    <div className="col s1" data-value='R'>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar}></img>
+                    <div className="col s1" day='Th'>
+                        {element}
                     </div>
-                    <div className="col s1" data-value='F'>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar}></img>
+                    <div className="col s1" day='Fr'>
+                        {element}
                     </div>
-                    <div className="col s1" data-value='Sa'>
-                        <img src={GoldStar} alt='gold star' height='35' onClick={addStar}></img>
+                    <div className="col s1" day='Sa'>
+                        {element}
                     </div>
+                    
 
                 </div>
                 <center>

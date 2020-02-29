@@ -8,5 +8,4 @@ export function GoldStar() {
     </div>
 };
 
-
 export default GoldStar;
