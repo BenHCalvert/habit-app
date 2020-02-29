@@ -1,5 +1,4 @@
 import React from "react";
-import GoldStar from "./goldStar.png";
 import "./style.css";
 
 export function DayOfWk(props) {
@@ -7,6 +6,5 @@ export function DayOfWk(props) {
         <p>{props.day}</p>
     </div>
 };
-
 
 export default DayOfWk;
