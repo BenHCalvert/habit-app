@@ -1,34 +1,19 @@
-# Create React Express App
+
+# Habit Building App
+This application assists users with building habits. This tool does so by enabling users to:
+* Specify habits they would like form
+* Specify a goal of when they would like to form the habit
+* Specify rewards to incentivize *practicing* habits
+* Specify the cost of rewards
+* Accumulate points by completing habits to redeem rewards
+
+The habit app will require users to login which will allow mulitple users to use the app
+Additionally the app will be available offline.
 
 ## Heroku URLs  
   [master branch](https://habit-app-2020.herokuapp.com/)
   
   [staging branch](https://habit-stagingbranch-2020.herokuapp.com/)
 
-## About This Boilerplate
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
-
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
