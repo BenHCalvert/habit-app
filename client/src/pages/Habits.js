@@ -9,7 +9,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import SubmitBtn from "../components/SubmitBtn";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
-import StarChart from '../components/StarChart';
+import StarChart2 from '../components/StarChart2';
 import Modal from '../components/Modal';
 import ActionBtn from '../components/actionBtn'
 
@@ -112,7 +112,7 @@ function Habits() {
           )}
       </Row>
 
-      <StarChart/>
+      <StarChart2/>
       <Modal/>
 
     </Container>
