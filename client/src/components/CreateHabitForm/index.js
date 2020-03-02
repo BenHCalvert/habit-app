@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-// import { useStoreContext } from "../../utils/GlobalState";
+import { useHabitContext } from "../../utils/GlobalState";
 import { CREATE_HABIT } from "../../utils/actions";
 import API from "../../utils/API";
 import AddBtn from "../AddBtn";
 import Input from "../Input";
 
 function CreateHabitForm() {
-  // const [state, dispatch] = useStoreContext();
+  const [state, dispatch] = useHabitContext();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,10 +21,10 @@ function CreateHabitForm() {
     })
     .then(res => {
       console.log("Habit Saved",res);
-  //     dispatchEvent({
-  //       type: CREATE_HABIT,
-  //       habit: res.data
-  //     });
+      dispatch({
+        type: CREATE_HABIT,
+        habit: res.data
+      });
     })
     .catch(err => console.log(err));
   };
@@ -35,7 +35,7 @@ function CreateHabitForm() {
       <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
         <Input name="habitName" placeholder="Enter Habit (required)"/>
         <Input name="weight" placeholder="Enter weight (1-3)"/>
-        <AddBtn className="modal-close"/>
+        <AddBtn/>
       </form>
     </div>
   )

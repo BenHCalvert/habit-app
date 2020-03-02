@@ -45,9 +45,6 @@ class Modal extends Component {
           Modal
         </a> */}
 
-        <AddBtn/>
-        <CreateHabitForm/>
-
         <div
           ref={Modal => {
             this.Modal = Modal;
@@ -59,7 +56,6 @@ class Modal extends Component {
         bottom-sheet class */}
           <div className="modal-content">
             <CreateHabitForm/>
-
           </div>
           <div class="modal-footer">
             <a href="#" class="modal-close waves-effect waves-purple btn-flat">

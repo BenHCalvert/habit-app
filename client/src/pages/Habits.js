@@ -9,25 +9,27 @@ import AddBtnModel from "../components/AddButton";
 import AddBtn from "../components/AddBtn";
 import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
-import Modal from '../components/Modal'
+import Modal from '../components/Modal';
+import { useHabitContext } from '../utils/GlobalState';
+import { UPDATE_HABITS } from '../utils/actions';
 
 function Habits() {
-  const [habits, setHabits] = useState([]);
+  // const [habits, setHabits] = useState([]);
   const [formObject, setFormObject] = useState([]);
+  const [habitState, setHabits] = useHabitContext([]);
 
-  useEffect(() => {
-    loadHabits()
-  }, [])
-
-  function loadHabits() {
+  const loadHabits = () => {
     API.getHabits()
-      .then(res =>
-        setHabits(res.data)
-      )
+      .then(res => {
+        setHabits({
+          type: UPDATE_HABITS,
+          habits: res.data
+        });
+      })
       .catch(err => console.log("error in loadHabit", err));
   };
 
-  function deleteHabit(id) {
+  const deleteHabit = (id) => {
     API.deleteHabit(id)
     .then(res => loadHabits())
     .catch(err => console.log(err));
@@ -42,28 +44,33 @@ function Habits() {
   };
 
     // takes object and calls save endpoint when form is submitted
-  function handleFormSubmit(event) {
-    event.preventDefault();
-      console.log("in handleFormSubmit");
-    if (formObject.habitName && formObject.weight) {
-      console.log("handleFormSubmit about save",formObject);
-      API.saveHabit({
-        date: new Date(Date.now()),
-        userId: "userId1",
-        habitName: formObject.habitName,
-        dayTotal: 14,
-        weight: formObject.weight
-      })
-        .then(res => {
-          console.log("save done",res);
-          loadHabits()
-        })
-        .catch(err => console.log("error in handleFormSubmit",err));
-    }
-  };
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //     console.log("in handleFormSubmit");
+  //   if (formObject.habitName && formObject.weight) {
+  //     console.log("handleFormSubmit about save",formObject);
+  //     API.saveHabit({
+  //       date: new Date(Date.now()),
+  //       userId: "userId1",
+  //       habitName: formObject.habitName,
+  //       dayTotal: 14,
+  //       weight: formObject.weight
+
+  //     })
+  //       .then(res => {
+  //         console.log("save done",res);
+  //         loadHabits()
+  //       })
+  //       .catch(err => console.log("error in handleFormSubmit",err));
+  //   }
+  // };
+
+  useEffect(() => {
+    loadHabits()
+  }, [])
 
 // debug
-console.log("habits : ", habits);
+console.log("habits : ", habitState.habits);
 
 // render function
   return (
@@ -71,7 +78,7 @@ console.log("habits : ", habits);
       <Nav></Nav>
       <Row>
         <h1>Habits you have selected</h1>
-        <form>
+        {/* <form>
           Enter Habit:<Input
             onChange={handleInputChange}
             name="habitName"
@@ -87,12 +94,12 @@ console.log("habits : ", habits);
             // disabled={!(formObject.habitName) && !(formObject.weight)}
             onClicky={(e) => {handleFormSubmit(e)}}
           />
-        </form>
+        </form> */}
       </Row>
       <Row>
-        {habits.length ? (
+        { habitState.habits.length ? (
           <List>
-            {habits.map(habit => (
+            {habitState.habits.map(habit => (
               <ListItem key={habit._id}>
                 <Link to={"habits/" + habit._id}>
                   <strong>
@@ -107,7 +114,7 @@ console.log("habits : ", habits);
           )}
       </Row>
       <Row>
-        <StarChart/>
+        {/* <StarChart/> */}
         <AddBtnModel/>
         <Modal/>
       </Row>

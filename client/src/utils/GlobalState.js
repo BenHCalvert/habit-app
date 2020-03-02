@@ -6,8 +6,8 @@ import {
   CREATE_HABIT
 } from "./actions";
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+const HabitContext = createContext();
+const { Provider } = HabitContext;
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -43,7 +43,7 @@ const reducer = (state, action) => {
   }
 };
 
-const StoreProvider = ({ value = [], ...props }) => {
+const HabitProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     habits: [],
     currentHabit: {
@@ -58,8 +58,8 @@ const StoreProvider = ({ value = [], ...props }) => {
   return <Provider value={[state,dispatch]} {...props} />;
 };
 
-const useStoreContext = () => {
-  return useContext(StoreContext);
+const useHabitContext = () => {
+  return useContext(HabitContext);
 };
 
-export { StoreProvider, useStoreContext };
+export { HabitProvider, useHabitContext };
