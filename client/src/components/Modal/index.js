@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import AddBtn from '../AddButton'
-import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import M from "materialize-css";
+
+import AddBtn from '../AddButton';
+import CreateHabitForm from '../CreateHabitForm';
 
 class Modal extends Component {
   componentDidMount() {
@@ -44,6 +46,7 @@ class Modal extends Component {
         </a> */}
 
         <AddBtn/>
+        <CreateHabitForm/>
 
         <div
           ref={Modal => {
@@ -55,18 +58,12 @@ class Modal extends Component {
           {/* If you want Bottom Sheet Modal then add 
         bottom-sheet class */}
           <div className="modal-content">
-            <h4>Add Habits and Rewards</h4>
-            <p>Insert Form Here</p>
-            <p>Name</p>
-            <p># of Days</p>
-            <p>Value</p>
+            <CreateHabitForm/>
+
           </div>
           <div class="modal-footer">
             <a href="#" class="modal-close waves-effect waves-purple btn-flat">
               Cancel
-            </a>
-            <a href="#" class="modal-close waves-effect waves-indigo btn-flat">
-              Add
             </a>
           </div>
         </div>
