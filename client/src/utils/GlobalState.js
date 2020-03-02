@@ -26,7 +26,7 @@ const reducer = (state, action) => {
     case REMOVE_HABIT:
       return {
         ...state,
-        habits: state.habit.filter((habit) => {
+        habits: state.habits.filter((habit) => {
           return habit._id !== action._id;
         })
       };

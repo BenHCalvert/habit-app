@@ -11,17 +11,18 @@ import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
 import Modal from '../components/Modal';
 import { useHabitContext } from '../utils/GlobalState';
-import { UPDATE_HABITS } from '../utils/actions';
+import { UPDATE_HABITS, REMOVE_HABIT } from '../utils/actions';
+import DeleteBtn from "../components/DeleteBtn";
 
 function Habits() {
-  // const [habits, setHabits] = useState([]);
+  // const [habits, dispatch] = useState([]);
   const [formObject, setFormObject] = useState([]);
-  const [habitState, setHabits] = useHabitContext([]);
+  const [state, dispatch] = useHabitContext([]);
 
   const loadHabits = () => {
     API.getHabits()
       .then(res => {
-        setHabits({
+        dispatch({
           type: UPDATE_HABITS,
           habits: res.data
         });
@@ -30,18 +31,25 @@ function Habits() {
   };
 
   const deleteHabit = (id) => {
+    console.log("deleteHabit");
     API.deleteHabit(id)
-    .then(res => loadHabits())
+    .then(() => {
+      dispatch({
+        type: REMOVE_HABIT,
+        _id: id
+      });
+    })
     .catch(err => console.log(err));
+    // .then(res => loadHabits())
   }
   // grabs values on change and update onject
   // name is the name of the variable passed in
   // which is evaluated as the variable name in the [] so that that prop
   // set is the value of variable. and then the value is assigned
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    setFormObject({ ...formObject, [name]: value })
-  };
+  // function handleInputChange(e) {
+  //   const { name, value } = e.target;
+  //   setFormObject({ ...formObject, [name]: value })
+  // };
 
     // takes object and calls save endpoint when form is submitted
   // function handleFormSubmit(event) {
@@ -70,7 +78,7 @@ function Habits() {
   }, [])
 
 // debug
-console.log("habits : ", habitState.habits);
+console.log("habits : ", state.habits);
 
 // render function
   return (
@@ -97,15 +105,16 @@ console.log("habits : ", habitState.habits);
         </form> */}
       </Row>
       <Row>
-        { habitState.habits.length ? (
+        { state.habits.length ? (
           <List>
-            {habitState.habits.map(habit => (
+            {state.habits.map(habit => (
               <ListItem key={habit._id}>
                 <Link to={"habits/" + habit._id}>
                   <strong>
                     {habit.habitName}
                   </strong>
                 </Link>
+                <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
               </ListItem>
             ))}
           </List>
