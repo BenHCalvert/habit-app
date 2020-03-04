@@ -4,9 +4,13 @@ import M from "materialize-css";
 
 import AddBtn from '../AddButton';
 import CreateHabitForm from '../CreateHabitForm';
+import { useHabitContext } from '../../utils/GlobalState';
+import { UPDATE_HABITS } from '../../utils/actions';
 
 class Modal extends Component {
   componentDidMount() {
+
+    // const [state, dispatch] = useHabitContext();
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
@@ -17,6 +21,12 @@ class Modal extends Component {
       },
       onCloseStart: () => {
         console.log("Close Start");
+        // clear currentintpu
+    // instance.destroy();
+        // dispatch({
+          // type: UPDATE_HABITS,
+          // habits: {}
+        // });
       },
       onCloseEnd: () => {
         console.log("Close End");

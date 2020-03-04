@@ -50,8 +50,8 @@ const HabitProvider = ({ value = [], ...props }) => {
       _id: 0,
       userId: "",
       habitName: "",
-      dayTotal: 14,
-      weight: 1
+      dayTotal: "",
+      weight: "" 
     }
   });
 

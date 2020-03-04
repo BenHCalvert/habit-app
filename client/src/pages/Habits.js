@@ -11,12 +11,10 @@ import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
 import Modal from '../components/Modal';
 import { useHabitContext } from '../utils/GlobalState';
-import { UPDATE_HABITS, REMOVE_HABIT } from '../utils/actions';
+import { UPDATE_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 import DeleteBtn from "../components/DeleteBtn";
 
 function Habits() {
-  // const [habits, dispatch] = useState([]);
-  const [formObject, setFormObject] = useState([]);
   const [state, dispatch] = useHabitContext([]);
 
   const loadHabits = () => {
@@ -40,38 +38,21 @@ function Habits() {
       });
     })
     .catch(err => console.log(err));
-    // .then(res => loadHabits())
   }
-  // grabs values on change and update onject
-  // name is the name of the variable passed in
-  // which is evaluated as the variable name in the [] so that that prop
-  // set is the value of variable. and then the value is assigned
-  // function handleInputChange(e) {
-  //   const { name, value } = e.target;
-  //   setFormObject({ ...formObject, [name]: value })
-  // };
 
-    // takes object and calls save endpoint when form is submitted
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //     console.log("in handleFormSubmit");
-  //   if (formObject.habitName && formObject.weight) {
-  //     console.log("handleFormSubmit about save",formObject);
-  //     API.saveHabit({
-  //       date: new Date(Date.now()),
-  //       userId: "userId1",
-  //       habitName: formObject.habitName,
-  //       dayTotal: 14,
-  //       weight: formObject.weight
-
-  //     })
-  //       .then(res => {
-  //         console.log("save done",res);
-  //         loadHabits()
-  //       })
-  //       .catch(err => console.log("error in handleFormSubmit",err));
-  //   }
-  // };
+  const modifyHabit = (id) => {
+    console.log("modifyHabit",id);
+    API.getHabit(id)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: SET_CURRENT_HABIT,
+        habit: res.data
+      });
+//  try populating global state here
+    })
+    .catch(err => console.log(err));
+  }
 
   useEffect(() => {
     loadHabits()
@@ -86,35 +67,20 @@ console.log("habits : ", state.habits);
       <Nav></Nav>
       <Row>
         <h1>Habits you have selected</h1>
-        {/* <form>
-          Enter Habit:<Input
-            onChange={handleInputChange}
-            name="habitName"
-            placeholder="Habit (required)"
-          />
-
-            Enter Weight of Habit<Input
-            onChange={handleInputChange}
-            name="weight"
-            placeholder="Weight (required)"
-          />
-          <AddBtn
-            // disabled={!(formObject.habitName) && !(formObject.weight)}
-            onClicky={(e) => {handleFormSubmit(e)}}
-          />
-        </form> */}
       </Row>
       <Row>
         { state.habits.length ? (
           <List>
             {state.habits.map(habit => (
               <ListItem key={habit._id}>
-                <Link to={"habits/" + habit._id}>
-                  <strong>
-                    {habit.habitName}
-                  </strong>
-                </Link>
-                <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
+                  {/* <Link to={"habits/" + habit._id}> */}
+                  <a className='modal-trigger' data-target='modal1' onClick={() => modifyHabit(habit._id)}>
+                      {habit.habitName}
+                  </a>
+                  {/* </Link>  */}
+                  {habit.weight}
+                  <StarChart/>
+                  <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
               </ListItem>
             ))}
           </List>
