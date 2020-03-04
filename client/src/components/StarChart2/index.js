@@ -29,7 +29,8 @@ export function StarChart2() {
                     <center><h6>Habit Name</h6></center>
                 </div>
                 <div className="row">
-                    <div className="App">
+                    <center>
+                    <div className="Habit">
                         <div className="col s1">
                             {days.sunday ? (
                                 <GoldStar />
@@ -80,6 +81,7 @@ export function StarChart2() {
                                 )}
                         </div>
                     </div>
+                    </center>
 
 
                 </div>
