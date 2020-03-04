@@ -1,10 +1,15 @@
 import React from "react";
-import "./style.css";
 
-export function DayOfWk(props) {
-    <div className='dayContainer'>
-        <p>{props.day}</p>
-    </div>
+const DayOfWk = ({ handleClick, day }) => {
+  return (
+    <p
+      onClick={() => {
+        handleClick(day);
+      }}
+    >
+      {day}
+    </p>
+  );
 };
 
 export default DayOfWk;

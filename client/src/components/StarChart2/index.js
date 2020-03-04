@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GoldStar from '../GoldStar';
 import DayOfWk from '../DayOfWk';
 
-// initially set the element to be the day of the week
-const element = useState(<DayOfWk/>);
-
-// when the element is clicked on, swap DayOfWk for GoldStar
-function selector() {
-    if (click = true){
-        element = <GoldStar/>
-    }
-}
-
 export function StarChart2() {
+    const [days, setDays] = useState({
+        sunday: false,
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: false,
+        saturday: false
+    });
+
+    const handleClick = day => {
+        console.log(day);
+        setDays({ ...days, [day]: true });
+    };
+
+    useEffect(() => {
+        console.log(days);
+    }, [days]);
+
     return (
         <React.Fragment>
             <div className='chartBorder'>
@@ -20,29 +29,44 @@ export function StarChart2() {
                     <center><h6>Habit Name</h6></center>
                 </div>
                 <div className="row">
-                    {/* 7 days go here */}
-                    <div className="col s1" day='Su'>
-                        {element}
+                    <div className="App">
+                        {days.sunday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="sunday" handleClick={handleClick} />
+                            )}
+                        {days.monday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="monday" handleClick={handleClick} />
+                            )}
+                        {days.tuesday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="tuesday" handleClick={handleClick} />
+                            )}
+                        {days.wednesday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="wednesday" handleClick={handleClick} />
+                            )}
+                        {days.thursday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="thursday" handleClick={handleClick} />
+                            )}
+                        {days.friday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="friday" handleClick={handleClick} />
+                            )}
+                        {days.saturday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="saturday" handleClick={handleClick} />
+                            )}
                     </div>
-                    <div className="col s1" day='Mo'>
-                        {element}
-                    </div>
-                    <div className="col s1" day='Tu'>
-                        {element}
-                    </div>
-                    <div className="col s1" day='We'>
-                        {element}
-                    </div>
-                    <div className="col s1" day='Th'>
-                        {element}
-                    </div>
-                    <div className="col s1" day='Fr'>
-                        {element}
-                    </div>
-                    <div className="col s1" day='Sa'>
-                        {element}
-                    </div>
-                    
+
 
                 </div>
                 <center>
