@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Input from "../components/Input";
+// import { Link } from "react-router-dom";
+import { Row, Container } from "../components/Grid";
 // using btn tied to database AddButton is tied to model
 import AddBtnModel from "../components/AddButton";
-import AddBtn from "../components/AddBtn";
 import Nav from "../components/Nav";
-import StarChart from '../components/StarChart';
+// import StarChart from '../components/StarChart';
 import Modal from '../components/Modal';
 import { useHabitContext } from '../utils/GlobalState';
-import { UPDATE_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
+import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 import DeleteBtn from "../components/DeleteBtn";
 
 function Habits() {
@@ -21,7 +19,7 @@ function Habits() {
     API.getHabits()
       .then(res => {
         dispatch({
-          type: UPDATE_HABITS,
+          type: GET_HABITS,
           habits: res.data
         });
       })
@@ -40,8 +38,8 @@ function Habits() {
     .catch(err => console.log(err));
   }
 
-  const modifyHabit = (id) => {
-    console.log("modifyHabit",id);
+  const setCurrentHabit = (id) => {
+    console.log("setCurrentHabit",id);
     API.getHabit(id)
     .then((res) => {
       console.log(res);
@@ -52,6 +50,13 @@ function Habits() {
 //  try populating global state here
     })
     .catch(err => console.log(err));
+  }
+
+  const clearCurrentHabitState = () => {
+    dispatch({
+      type: SET_CURRENT_HABIT,
+      habit: {}
+    })
   }
 
   useEffect(() => {
@@ -74,12 +79,12 @@ console.log("habits : ", state.habits);
             {state.habits.map(habit => (
               <ListItem key={habit._id}>
                   {/* <Link to={"habits/" + habit._id}> */}
-                  <a className='modal-trigger' data-target='modal1' onClick={() => modifyHabit(habit._id)}>
+                  <a className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}>
                       {habit.habitName}
                   </a>
                   {/* </Link>  */}
                   {habit.weight}
-                  <StarChart/>
+                  {/* <StarChart/> */}
                   <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
               </ListItem>
             ))}
@@ -90,7 +95,9 @@ console.log("habits : ", state.habits);
       </Row>
       <Row>
         {/* <StarChart/> */}
-        <AddBtnModel/>
+        <a onClick={() => clearCurrentHabitState()}>
+         <AddBtnModel />
+        </a>
         <Modal/>
       </Row>
 

@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useHabitContext } from "../../utils/GlobalState";
-import { CREATE_HABIT, UPDATE_HABITS } from "../../utils/actions";
+import { CREATE_HABIT, UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actions";
 import API from "../../utils/API";
 import AddBtn from "../AddBtn";
 import Input from "../Input";
-import { startSession } from "mongoose";
 
 function CreateHabitForm() {
   // let initialState = "";
   // if ( state.currentHabit == undefined) { initialState = state.currentHabit };
   const [state, dispatch] = useHabitContext();
   // const [formInput, setFormInput] = useState(state.currentHabit);
-  console.log("createHabitForm",state.currentHabit);
+  console.log("createHabitForm state.currentHabit",state.currentHabit);
 
   // const [formInput, setFormInput] = useState(state.currentHabit);
   // const [formInput, setFormInput] = useState({ });
   // const [formInput, setFormInput] = useState(false);
   // const [formInput, setFormInput] = useState({ habitName: "", dayTotal: null, weight: null});
   // creates local state
-  const [formInput, setFormInput] = useState(false);
+  const [formInput, setFormInput] = useState({});
 
   // use Effect calls setFormInput once the state is set force syncronizity
   useEffect(() => {
-    console.log("herehere",state.currentHabit);
+    console.log("useEffect state.currentHabit state.currentHabit",state.currentHabit);
     setFormInput(state.currentHabit);
   },[state.currentHabit]);
+  // },[]);
 
 
   useEffect(() => {
-    console.log("formInput",formInput);
+    console.log("use effect formInput",formInput);
   },[formInput]);
   
   // useEffect(()=> {console.log("forminput",formInput)},[formInput]);
@@ -39,57 +39,59 @@ function CreateHabitForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("handleSubmit",e.target);
     // const href = habitNameRef.current.value;
     // console.log("handleSubmit href",href);
 
-    let newDate = "";
-    if (!state.currentState) {
-      newDate = new Date(Date.now());
+    if (state.currentHabit._id === undefined) {
+      console.log("createing new - form",formInput)
+
+      API.saveHabit({
+        date: new Date(Date.now()),
+        userId: "userId1",
+        habitName: formInput.habitName,
+        dayTotal: formInput.dayTotal,
+        weight: formInput.weight
+      })
+      .then(res => {
+        console.log("Habit Saved res",res);
+        dispatch({
+          type: CREATE_HABIT,
+          habit: res.data
+        });
+      })
+      .catch(err => console.log(err));
     } else {
-      newDate = state.currentHabit.date;
+      console.log("Updating existing",formInput)
+
+      API.updateHabit({
+        _id: formInput._id,
+        date: formInput.date,
+        userId: "userId1",
+        habitName: formInput.habitName,
+        dayTotal: formInput.dayTotal,
+        weight: formInput.weight
+      })
+      .then(res => {
+        console.log("Habit update res",res);
+        dispatch({
+          type: UPDATE_HABIT,
+          habit: res.data
+        });
+      })
+      .catch(err => console.log(err));
     }
 
-      // habitName: e.target.habitName.value,
-      // dayTotal: e.target.dayTotal.value,
-      // weight: e.target.weight.value
-      // if new call save vs update
-    API.saveHabit({
-      date: newDate,
-      userId: "userId1",
-      habitName: formInput.habitName,
-      dayTotal: formInput.dayTotal,
-      weight: formInput.weight
-    })
-    .then(res => {
-      console.log("Habit Saved",res);
-
-      if (formInput){
-        // need to fix the reducer
-        // type: UPDATE_HABITS,
-        console.log("update here");
-      dispatch({
-        type: CREATE_HABIT,
-        habit: res.data
-      });
-
-      } else {
-
-      dispatch({
-        type: CREATE_HABIT,
-        habit: res.data
-      });
-      }
-
-    })
-    .catch(err => console.log(err));
-
     // clear form
-    // habitNameRef.current.value = "";
+    // state.currentHabit = {};
+    dispatch({
+      type: SET_CURRENT_HABIT,
+      habit: {}
+    })
+
+    setFormInput({});
     e.target.habitName.value = "";
     e.target.weight.value = "";
     e.target.dayTotal.value = "";
-
   };
 
   return (
@@ -104,9 +106,10 @@ function CreateHabitForm() {
         {/* <Input name="dayTotal" placeholder="Enter days to complete" value={state.currentHabit.dayTotal}/> */}
 
         {/* <Input name="habitName"  placeholder="Enter Habit (required)" setFormInput={handleChange} formInput={state.currentHabit.habitName}/> */}
-        <Input name="habitName"  placeholder="Enter Habit (required)" setFormInput={handleChange} input={formInput}/>
-        <Input name="weight"  placeholder="weight" setFormInput={handleChange} input={formInput}/>
-        <Input name="dayTotal"  placeholder="dayTotal" setFormInput={handleChange} input={formInput}/>
+        {/* { console.log("render forminput",formInput)} */}
+        <Input name="habitName"  placeholder="Enter Habit (required)" setform={handleChange} input={formInput}/>
+        <Input name="weight"  placeholder="weight" setform={handleChange} input={formInput}/>
+        <Input name="dayTotal"  placeholder="dayTotal" setform={handleChange} input={formInput}/>
         <AddBtn/>
       </form>
     </div>

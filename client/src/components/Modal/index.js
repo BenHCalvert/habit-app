@@ -2,15 +2,10 @@ import React, { Component } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css";
 
-import AddBtn from '../AddButton';
 import CreateHabitForm from '../CreateHabitForm';
-import { useHabitContext } from '../../utils/GlobalState';
-import { UPDATE_HABITS } from '../../utils/actions';
 
 class Modal extends Component {
   componentDidMount() {
-
-    // const [state, dispatch] = useHabitContext();
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
@@ -21,12 +16,8 @@ class Modal extends Component {
       },
       onCloseStart: () => {
         console.log("Close Start");
-        // clear currentintpu
-    // instance.destroy();
-        // dispatch({
-          // type: UPDATE_HABITS,
-          // habits: {}
-        // });
+
+        // instance.close();
       },
       onCloseEnd: () => {
         console.log("Close End");
@@ -67,8 +58,8 @@ class Modal extends Component {
           <div className="modal-content">
             <CreateHabitForm/>
           </div>
-          <div class="modal-footer">
-            <a href="#" class="modal-close waves-effect waves-purple btn-flat">
+          <div className="modal-footer">
+            <a href="#" className="modal-close waves-effect waves-purple btn-flat">
               Cancel
             </a>
           </div>

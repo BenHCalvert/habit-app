@@ -9,8 +9,14 @@ export default {
   getHabit: function(id) {
     return axios.get("/api/habits/" + id);
   },
+  // Updates the habits with the given id
+  updateHabit: function(habitData) {
+    console.log("util/API/ updateHabit",habitData._id, habitData)
+    return axios.put("/api/habits/" + habitData._id, habitData);
+  },
   // Deletes the habit with the given id
   deleteHabit: function(id) {
+    console.log("util/API/ delHabit",id)
     return axios.delete("/api/habits/" + id);
   },
   // Saves a habit to the database

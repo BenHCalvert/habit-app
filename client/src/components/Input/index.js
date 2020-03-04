@@ -12,7 +12,8 @@ export function Input(props) {
       <input 
         className="form-control" 
         {...props} 
-        onChange={(e)=>{ props.setFormInput({...props.input, [props.name]: e.target.value});}} 
+        // onChange={(e)=>{ props.setFormInput({...props.input, [props.name]: e.target.value});}} 
+        onChange={(e)=>{ props.setform({...props.input, [props.name]: e.target.value});}} 
         value={ props.input[props.name] }
       />
     </div>
