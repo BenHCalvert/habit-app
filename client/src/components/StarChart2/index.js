@@ -30,41 +30,55 @@ export function StarChart2() {
                 </div>
                 <div className="row">
                     <div className="App">
-                        {days.sunday ? (
-                            <GoldStar />
-                        ) : (
-                                <DayOfWk day="sunday" handleClick={handleClick} />
-                            )}
-                        {days.monday ? (
-                            <GoldStar />
-                        ) : (
-                                <DayOfWk day="monday" handleClick={handleClick} />
-                            )}
-                        {days.tuesday ? (
-                            <GoldStar />
-                        ) : (
-                                <DayOfWk day="tuesday" handleClick={handleClick} />
-                            )}
-                        {days.wednesday ? (
-                            <GoldStar />
-                        ) : (
-                                <DayOfWk day="wednesday" handleClick={handleClick} />
-                            )}
+                        <div className="col s1">
+                            {days.sunday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="sunday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.monday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="monday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.tuesday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="tuesday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.wednesday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="wednesday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
                         {days.thursday ? (
                             <GoldStar />
                         ) : (
                                 <DayOfWk day="thursday" handleClick={handleClick} />
                             )}
-                        {days.friday ? (
-                            <GoldStar />
-                        ) : (
-                                <DayOfWk day="friday" handleClick={handleClick} />
-                            )}
-                        {days.saturday ? (
-                            <GoldStar />
-                        ) : (
-                                <DayOfWk day="saturday" handleClick={handleClick} />
-                            )}
+                        </div>
+                        <div className="col s1">
+                            {days.friday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="friday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.saturday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="saturday" handleClick={handleClick} />
+                                )}
+                        </div>
                     </div>
 
 
