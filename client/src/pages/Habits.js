@@ -6,11 +6,12 @@ import { Row, Container } from "../components/Grid";
 // using btn tied to database AddButton is tied to model
 import AddBtnModel from "../components/AddButton";
 import Nav from "../components/Nav";
-// import StarChart from '../components/StarChart';
+import StarChart from '../components/StarChart';
 import Modal from '../components/Modal';
 import { useHabitContext } from '../utils/GlobalState';
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 import DeleteBtn from "../components/DeleteBtn";
+import "./style.css";
 
 function Habits() {
   const [state, dispatch] = useHabitContext([]);
@@ -89,6 +90,7 @@ console.log("habits : ", state.habits);
               </ListItem>
             ))}
           </List>
+
         ) : (
             <h3> No habits yet specified</h3>
           )}
@@ -100,9 +102,40 @@ console.log("habits : ", state.habits);
         </a>
         <Modal/>
       </Row>
+      <Row>
 
-
-    </Container>
+          <table>
+            <thead>
+              <tr>
+                <th>Habit</th>
+                <th>Weight</th>
+                <th>This weeks stars</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {state.habits.map(habit => (
+                <tr>
+                  <td className='hilite'>
+                    <a className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}>
+                      {habit.habitName}
+                    </a>
+                  </td>
+                  <td>
+                    {habit.weight}
+                  </td>
+                  <td>
+                    <StarChart/>
+                  </td>
+                  <td>
+                    <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </Row>
+</Container>
   );
 }
 
