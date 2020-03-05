@@ -10,7 +10,7 @@ import Modal from '../components/Modal';
 import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
 
-import { useHabitContext } from '../utils/GlobalState';
+import { useHabitContext } from '../utils/GlobalHabitState';
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 
 import "./style.css";
@@ -20,7 +20,8 @@ function Habits() {
 
   const loadHabits = () => {
     API.getHabits()
-      .then(res => {
+      .then( res => {
+        console.log("getHabits",res)
         dispatch({
           type: GET_HABITS,
           habits: res.data

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Habits from "./pages/Habits";
+import Rewards from "./pages/Rewards";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'materialize-css/dist/css/materialize.min.css';
-import { HabitProvider } from "./utils/GlobalState"; 
+import { HabitProvider } from "./utils/GlobalHabitState"; 
+import { RewardProvider } from "./utils/GlobalRewardState"; 
 
 function App() {
     return (
@@ -14,6 +16,11 @@ function App() {
               <Route exact path="/habits" component={Habits}/>            
             </Switch>
           </HabitProvider>
+          <RewardProvider>
+            <Switch>
+              <Route exact path="/rewards" component={Rewards}/>            
+            </Switch>
+          </RewardProvider>
         </div>
       </Router>
     );

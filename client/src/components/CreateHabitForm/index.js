@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHabitContext } from "../../utils/GlobalState";
+import { useHabitContext } from "../../utils/GlobalHabitState";
 import { CREATE_HABIT, UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actions";
 import API from "../../utils/API";
 import AddBtn from "../AddBtn";
