@@ -74,7 +74,6 @@ console.log("habits : ", state.habits);
 // render function
   return (
     <Container fluid>
-      <Nav></Nav>
       <Row>
         <h3>Keep up the good work -username- </h3>
         <EarnedStars/>
