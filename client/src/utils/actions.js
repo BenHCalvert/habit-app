@@ -1,0 +1,6 @@
+export const GET_HABITS = "GET_HABITS";
+export const REMOVE_HABIT = "REMOVE_HABIT";
+export const CREATE_HABIT = "CREATE_HABIT";
+export const UPDATE_HABIT = "UPDATE_HABIT";
+export const SET_CURRENT_HABIT = "SET_CURRENT_HABIT";
+export const CLEAR_CURRENT_HABIT = "CLEAR_CURRENT_HABIT";

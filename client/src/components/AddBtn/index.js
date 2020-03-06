@@ -4,7 +4,9 @@ export function AddBtn(props) {
 
   return (
     // round button with plus
-    <button className="btn-floating btn-large waves-effect waves-light green" onClick={props.onClicky}><i className="material-icons">add</i></button>
+    // this works on the form where onClicky can be called
+    // <button className="btn-floating btn-large waves-effect waves-light green" onClick={props.onClicky}><i className="material-icons">add</i></button>
+    <button className="modal-close btn-floating btn-large waves-effect waves-light green" ><i className="material-icons">add</i></button>
   );
 }
 
