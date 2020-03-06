@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+// import { Default } from "./LoginNav";
+
 
 export function Nav() {
     return (
@@ -14,6 +16,8 @@ export function Nav() {
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/">Habits</Link></li>
                             <li><Link to="/">Rewards</Link></li>
+                            <li><Link to="/">Login</Link></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -23,6 +27,7 @@ export function Nav() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/">Habits</Link></li>
                     <li><Link to="/">Rewards</Link></li>
+                    <li><Link to="/">Login</Link></li>
                 </ul>
 
                 {/* <Switch>
