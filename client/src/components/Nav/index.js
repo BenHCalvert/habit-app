@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+// import { Default } from "./LoginNav";
+
 
 export function Nav() {
     return (
@@ -12,8 +14,12 @@ export function Nav() {
                         <ul className="right hide-on-med-and-down">
                             {/* TODO: How do we link here with React Router? */}
                             <li><Link to="/">Home</Link></li>
+
                             <li><Link to="/habits">Habits</Link></li>
                             <li><Link to="/rewards">Rewards</Link></li>
+                            <li><Link to="/login">Login</Link></li>
+
+
                         </ul>
                     </div>
                 </nav>
@@ -23,6 +29,8 @@ export function Nav() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/habits">Habits</Link></li>
                     <li><Link to="/rewards">Rewards</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+
                 </ul>
 
                 {/* <Switch>
