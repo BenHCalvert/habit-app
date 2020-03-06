@@ -1,62 +1,103 @@
-import React from "react";
-import "./style.css";
+import React, { useState, useEffect } from "react";
+import GoldStar from '../GoldStar';
+import DayOfWk from '../DayOfWk';
 
-export function StarChartxx() {
-  return (
-    <React.Fragment>
-      <div className='chartBorder'>
-        <div className="Row">
-          <center><h6>Habit Name</h6></center>
-        </div>
-        <div className="row">
-        <input name="group1" type="radio" checked />
-          <span className="starRating">
-            {/* 7 days go here */}
-            <div className="col s1">
-              <span className="starRating">
-                <input id="rating7" type="radio" name="rating" value="7"></input>
-                <label for="rating7">7</label>
-              </span>
+export function StarChart() {
+    const [days, setDays] = useState({
+        sunday: false,
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: false,
+        saturday: false
+    });
+
+    const handleClick = day => {
+        console.log(day);
+        setDays({ ...days, [day]: true });
+    };
+
+    useEffect(() => {
+        console.log(days);
+    }, [days]);
+
+    return (
+        <React.Fragment>
+            <div className='chartBorder'>
+                <div className="Row">
+                    <center><h6>Habit Name</h6></center>
+                </div>
+                <div className="row">
+                    <center>
+                    <div className="Habit">
+                        <div className="col s1">
+                            {days.sunday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="sunday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.monday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="monday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.tuesday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="tuesday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.wednesday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="wednesday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                        {days.thursday ? (
+                            <GoldStar />
+                        ) : (
+                                <DayOfWk day="thursday" handleClick={handleClick} />
+                            )}
+                        </div>
+                        <div className="col s1">
+                            {days.friday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="friday" handleClick={handleClick} />
+                                )}
+                        </div>
+                        <div className="col s1">
+                            {days.saturday ? (
+                                <GoldStar />
+                            ) : (
+                                    <DayOfWk day="saturday" handleClick={handleClick} />
+                                )}
+                        </div>
+                    </div>
+                    </center>
+
+
+                </div>
+                <center>
+                    <div className="row">
+                        <div className="col s3">
+                            <a class="waves-effect waves-light btn-small amber lighten-2">Complete</a>
+                        </div>
+                        <div className="col s3 offset-s6">
+                            <a class="waves-effect waves-light btn-small red darken-3">Missed</a>
+                        </div>
+                    </div>
+                </center>
             </div>
-            <div className="col s1">
-              <input id="rating6" type="radio" name="rating" value="6"></input>
-              <label for="rating6">6</label>
-            </div>
-            <div className="col s1">
-              <input id="rating5" type="radio" name="rating" value="5"></input>
-              <label for="rating5">5</label>
-            </div>
-            <div className="col s1">
-              <input id="rating4" type="radio" name="rating" value="4"></input>
-              <label for="rating4">4</label>
-            </div>
-            <div className="col s1">
-              <input id="rating3" type="radio" name="rating" value="3"></input>
-              <label for="rating3">3</label>
-            </div>
-            <div className="col s1">
-              <input id="rating2" type="radio" name="rating" value="2"></input>
-              <label for="rating2">2</label>
-            </div>
-            <div className="col s1">
-              <input id="rating1" type="radio" name="rating" value="1"></input>
-              <label for="rating1">1</label>
-            </div>
-          </span>
-        </div>
-        <center>
-          <div className="row">
-            <div className="col s3">
-              <a class="waves-effect waves-light btn-small amber lighten-2">Complete</a>
-            </div>
-            <div className="col s3 offset-s6">
-              <a class="waves-effect waves-light btn-small red darken-3">Missed</a>
-            </div>
-          </div>
-        </center>
-      </div>
-    </React.Fragment>
-  );
+        </React.Fragment>
+    );
 }
 
-export default StarChartxx;
+export default StarChart;

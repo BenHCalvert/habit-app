@@ -9,7 +9,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import SubmitBtn from "../components/SubmitBtn";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
-import StarChart from '../components/StarChart2';
+import StarChart from '../components/StarChart';
 import Modal from '../components/Modal';
 
 function Habits() {
