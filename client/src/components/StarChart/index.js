@@ -14,8 +14,16 @@ export function StarChart() {
     });
 
     const handleClick = day => {
+        // days.map( day => (
+        //     console.log("here",[day],day)
+        // ));
         console.log(day);
-        setDays({ ...days, [day]: true });
+        console.log('state value', days[day])
+        if (days[day] === false) {
+            setDays({ ...days, [day]: true });
+        } if (days[day] === true) {
+            setDays({ ...days, [day]: false });
+        }
     };
 
     useEffect(() => {
@@ -33,49 +41,49 @@ export function StarChart() {
                     <div className="Habit">
                         <div className="col s1">
                             {days.sunday ? (
-                                <GoldStar />
+                                <GoldStar day="sunday" handleClick={handleClick} />
                             ) : (
                                     <DayOfWk day="sunday" handleClick={handleClick} />
                                 )}
                         </div>
                         <div className="col s1">
                             {days.monday ? (
-                                <GoldStar />
+                                <GoldStar day="monday" handleClick={handleClick} />
                             ) : (
                                     <DayOfWk day="monday" handleClick={handleClick} />
                                 )}
                         </div>
                         <div className="col s1">
                             {days.tuesday ? (
-                                <GoldStar />
+                                <GoldStar day='tuesday' handleClick={handleClick} />
                             ) : (
                                     <DayOfWk day="tuesday" handleClick={handleClick} />
                                 )}
                         </div>
                         <div className="col s1">
                             {days.wednesday ? (
-                                <GoldStar />
+                                <GoldStar day='wednesday' handleClick={handleClick} />
                             ) : (
                                     <DayOfWk day="wednesday" handleClick={handleClick} />
                                 )}
                         </div>
                         <div className="col s1">
                         {days.thursday ? (
-                            <GoldStar />
+                            <GoldStar day='thursday' handleClick={handleClick} />
                         ) : (
                                 <DayOfWk day="thursday" handleClick={handleClick} />
                             )}
                         </div>
                         <div className="col s1">
                             {days.friday ? (
-                                <GoldStar />
+                                <GoldStar day='friday' handleClick={handleClick} />
                             ) : (
                                     <DayOfWk day="friday" handleClick={handleClick} />
                                 )}
                         </div>
                         <div className="col s1">
                             {days.saturday ? (
-                                <GoldStar />
+                                <GoldStar day='saturday' handleClick={handleClick}   />
                             ) : (
                                     <DayOfWk day="saturday" handleClick={handleClick} />
                                 )}
