@@ -118,6 +118,7 @@ console.log("habits : ", state.habits);
         <span onClick={() => clearCurrentHabitState()}>
          <AddBtnModel />
         </span>
+
         <Modal/>
       </Row>
 </Container>
