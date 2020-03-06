@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GoldStar from '../GoldStar';
 import DayOfWk from '../DayOfWk';
 
-export function StarChart2() {
+export function StarChart() {
     const [days, setDays] = useState({
         sunday: false,
         monday: false,
@@ -100,4 +100,4 @@ export function StarChart2() {
     );
 }
 
-export default StarChart2;
+export default StarChart;

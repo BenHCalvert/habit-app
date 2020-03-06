@@ -9,12 +9,11 @@ import DeleteBtn from "../components/DeleteBtn";
 import SubmitBtn from "../components/SubmitBtn";
 import AddBtn from "../components/AddButton";
 import Nav from "../components/Nav";
-import StarChart2 from '../components/StarChart2';
+import StarChart from '../components/StarChart2';
 import Modal from '../components/Modal';
 
 function Habits() {
   const [habits, setHabitState] = useState([]);
-  // const [habits, setHabitState] = useState([]);
   const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
@@ -111,7 +110,7 @@ function Habits() {
           )}
       </Row>
 
-      <StarChart2/>
+      <StarChart/>
       <Modal/>
 
     </Container>
