@@ -74,7 +74,6 @@ console.log("rewards : ", state.rewards);
 // render function
   return (
     <Container fluid>
-      <Nav></Nav>
       <Row>
         <h3>Add or redeem reward</h3>
         {/* <EarnedStars/> */}

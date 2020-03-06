@@ -13,6 +13,7 @@ import StarChart from '../components/StarChart';
 import { useHabitContext } from '../utils/GlobalHabitState';
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 
+
 import "./style.css";
 
 function Habits() {
@@ -73,7 +74,6 @@ console.log("habits : ", state.habits);
 // render function
   return (
     <Container fluid>
-      <Nav></Nav>
       <Row>
         <h3>Keep up the good work -username- </h3>
         <EarnedStars/>
@@ -118,6 +118,7 @@ console.log("habits : ", state.habits);
         <span onClick={() => clearCurrentHabitState()}>
          <AddBtnModel />
         </span>
+
         <Modal/>
       </Row>
 </Container>
