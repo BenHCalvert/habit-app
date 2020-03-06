@@ -1,118 +1,106 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import Input from "../components/Input";
-import DeleteBtn from "../components/DeleteBtn";
-import SubmitBtn from "../components/SubmitBtn";
-import AddBtn from "../components/AddButton";
+import API from "../utils/API";
+// import { Link } from "react-router-dom";
+import { Row, Container } from "../components/Grid";
+// using btn tied to database AddButton is tied to model
+import AddBtnModel from "../components/AddButton";
 import Nav from "../components/Nav";
-import StarChart from '../components/StarChart';
-import Modal from '../components/Modal'
+// import StarChart from '../components/StarChart';
+import Modal from '../components/Modal';
+import { useHabitContext } from '../utils/GlobalState';
+import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
+import DeleteBtn from "../components/DeleteBtn";
 
 function Habits() {
-  const [habits, setHabitState] = useState([]);
-  // const [habits, setHabitState] = useState([]);
-  const [formObject, setFormObject] = useState({})
+  const [state, dispatch] = useHabitContext([]);
+
+  const loadHabits = () => {
+    API.getHabits()
+      .then(res => {
+        dispatch({
+          type: GET_HABITS,
+          habits: res.data
+        });
+      })
+      .catch(err => console.log("error in loadHabit", err));
+  };
+
+  const deleteHabit = (id) => {
+    console.log("deleteHabit");
+    API.deleteHabit(id)
+    .then(() => {
+      dispatch({
+        type: REMOVE_HABIT,
+        _id: id
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
+  const setCurrentHabit = (id) => {
+    console.log("setCurrentHabit",id);
+    API.getHabit(id)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: SET_CURRENT_HABIT,
+        habit: res.data
+      });
+//  try populating global state here
+    })
+    .catch(err => console.log(err));
+  }
+
+  const clearCurrentHabitState = () => {
+    dispatch({
+      type: SET_CURRENT_HABIT,
+      habit: {}
+    })
+  }
 
   useEffect(() => {
     loadHabits()
   }, [])
 
-  function loadHabits() {
-    API.getHabits()
-      .then(res => {
-        setHabitState(res.data);
-        console.log("state",res.data);
-        console.log("habits",habits);
-        }
-      )
-      .catch(err => console.log("error in loadHabit", err));
-  };
+// debug
+console.log("habits : ", state.habits);
 
-  function deleteHabit(id) {
-    API.deleteHabit(id)
-    .then(res => loadHabits())
-    .catch(err => console.log(err));
-  }
-
-  // grabs values on change and update onject
-  function handleInputChange(e) {
-    const { habitName, value } = e.target;
-    setFormObject({ ...formObject, [habitName]: value })
-  };
-
-  // takes object and calls save endpoint when form is submitted
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject.habitName && true) {
-      API.saveHabit({
-        habitName: formObject.habitName,
-        weight: formObject.weight,
-      })
-        .then(res => loadHabits())
-        .catch(err => console.log(err));
-    }
-  };
-  // function handleFormSubmit(e) {
-    // e.preventDefault();
-    // may need to expand this logic out
-    // if (formObject.habitName) {
-    // API.saveHabit({
-
-    // })
-
-    // }
-  // }
-
+// render function
   return (
     <Container fluid>
       <Nav></Nav>
-      
       <Row>
         <h1>Habits you have selected</h1>
-        <form>
-          Enter Habit: <Input
-            onChange={handleInputChange}
-            name="habitName"
-            placeholder="Habit (required)"
-          />
-
-          Enter Weight of Habit<Input
-            onChange={handleInputChange}
-            name="weight"
-            placeholder="Weight (required)"
-          />
-          <SubmitBtn
-            disabled={!(formObject.habitName)}
-            onClick={handleFormSubmit}
-          >
-            Submit New Habit
-          </SubmitBtn>
-        </form>
       </Row>
       <Row>
-        {habits.length ? (
+        { state.habits.length ? (
           <List>
-            {habits.map(habit => (
+            {state.habits.map(habit => (
               <ListItem key={habit._id}>
-                <Link to={"habits/" + habit._id}>
-                  <strong>
-                    {habit.habitName}
-                  </strong>
-                </Link>
+                  {/* <Link to={"habits/" + habit._id}> */}
+                  <a className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}>
+                      {habit.habitName}
+                  </a>
+                  {/* </Link>  */}
+                  {habit.weight}
+                  {/* <StarChart/> */}
+                  <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
               </ListItem>
             ))}
           </List>
         ) : (
-            <h3> No Resutls to Display</h3>
+            <h3> No habits yet specified</h3>
           )}
       </Row>
+      <Row>
+        {/* <StarChart/> */}
+        <a onClick={() => clearCurrentHabitState()}>
+         <AddBtnModel />
+        </a>
+        <Modal/>
+      </Row>
 
-      <StarChart/>
-      <Modal/>
 
     </Container>
   );

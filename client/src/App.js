@@ -9,7 +9,7 @@ import NoMatch from "./pages/NoMatch";
 import LoginNav from "./components/Nav/LoginNav";
 import { Container } from 'reactstrap';
 import UserProvider from "./context";
-
+import { HabitProvider } from "./utils/GlobalState"; 
 
 
 function App() {
@@ -27,9 +27,16 @@ function App() {
               <Route exact path="/signup" component={() => <Auth action="signup" />}  />
               <Route exact path="/profile" component={Profile} />
               <Route component={NoMatch} />
-
           </Switch>
           </Container>
+
+          <HabitProvider>
+            <Switch>
+              <Route exact path="/" component={Habits}/>
+              <Route exact path="/habits" component={Habits}/>            
+            </Switch>
+          </HabitProvider>
+
         </div>
       </Router>
       </UserProvider>
