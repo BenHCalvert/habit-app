@@ -96,7 +96,7 @@ console.log("habits : ", state.habits);
       <Row>
         {/* <StarChart/> */}
         <a onClick={() => clearCurrentHabitState()}>
-         <AddBtnModel />
+          <AddBtnModel />
         </a>
         <Modal/>
       </Row>

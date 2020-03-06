@@ -14,32 +14,25 @@ import { HabitProvider } from "./utils/GlobalState";
 
 function App() {
     return (
+      <>
       <UserProvider>
       <Router>
-        <div>
-          <LoginNav />
-          <Container>
-          <Switch>
-            {/* need to change default route to login page */}
-            <Route exact path="/" component={Habits}/>
-            <Route exact path="/habits" component={Habits}/>   
-            <Route exact path="/login" component={() => <Auth action="login" />}  />
-              <Route exact path="/signup" component={() => <Auth action="signup" />}  />
-              <Route exact path="/profile" component={Profile} />
-              <Route component={NoMatch} />
-          </Switch>
-          </Container>
-
           <HabitProvider>
             <Switch>
-              <Route exact path="/" component={Habits}/>
               <Route exact path="/habits" component={Habits}/>            
             </Switch>
           </HabitProvider>
+          <Switch>
+            {/* need to change default route to login page */}
+              <Route exact path="/login" component={() => <Auth action="login" />}  />
+              <Route exact path="/signup" component={() => <Auth action="signup" />}  />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/"  component={() => <Auth action="login" />}  />
+          </Switch>
 
-        </div>
       </Router>
       </UserProvider>
+      </>
     );
 }
 
