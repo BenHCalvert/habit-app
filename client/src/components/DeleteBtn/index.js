@@ -6,10 +6,10 @@ import "./style.css";
 function DeleteBtn(props) {
   return (
     <span className="delete-btn" {...props} role="button" tabIndex="0">
-      {/* ✗ */}
-      Delete 
+      ✗
+      {/* Delete  */}
     </span>
   );
 }
 
-export default DeleteBtn;
+export default DeleteBtn

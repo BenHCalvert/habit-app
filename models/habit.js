@@ -8,6 +8,7 @@ const habitSchema = new Schema({
   userId: { type: String, required: true },
   habitName: { type: String, required: true },
   dayTotal: { type: Number, required: true },
+  weight: { type: Number, required: true },
 });
 
 const Habit = mongoose.model("Habit", habitSchema);
