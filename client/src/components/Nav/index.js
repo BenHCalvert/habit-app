@@ -7,13 +7,13 @@ export function Nav() {
             <Router>
                 <nav>
                     <div className="nav-wrapper">
-                        <a href="#!" className="brand-logo">Logo</a>
+                        <a href="#!" className="brand-logo">Yourname - Star Chart</a>
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
                             {/* TODO: How do we link here with React Router? */}
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/">Habits</Link></li>
-                            <li><Link to="/">Rewards</Link></li>
+                            <li><Link to="/habits">Habits</Link></li>
+                            <li><Link to="/rewards">Rewards</Link></li>
                         </ul>
                     </div>
                 </nav>
@@ -21,8 +21,8 @@ export function Nav() {
                 {/* TODO: How do we link here with React Router? */}
                 <ul className="sidenav" id="mobile-demo">
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">Habits</Link></li>
-                    <li><Link to="/">Rewards</Link></li>
+                    <li><Link to="/habits">Habits</Link></li>
+                    <li><Link to="/rewards">Rewards</Link></li>
                 </ul>
 
                 {/* <Switch>
