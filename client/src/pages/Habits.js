@@ -13,6 +13,7 @@ import StarChart from '../components/StarChart';
 import { useHabitContext } from '../utils/GlobalHabitState';
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 
+
 import "./style.css";
 
 function Habits() {

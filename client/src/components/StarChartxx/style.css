@@ -52,4 +52,9 @@ body{
   .starRating:not(:hover) > :checked ~ label:before{
     opacity : 1;
   }
+
+  .chartBorder {
+    border: 1px solid #ccc!important;
+    border-radius: 8px;
+  }
   

@@ -8,10 +8,12 @@ export function Nav() {
         <React.Fragment>
             <Router>
                 <nav>
+
                     <div className="nav-wrapper">
                         <a href="#!" className="brand-logo">Yourname - Star Chart</a>
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
+
                             {/* TODO: How do we link here with React Router? */}
                             <li><Link to="/">Home</Link></li>
 
