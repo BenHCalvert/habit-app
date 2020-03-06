@@ -2,6 +2,6 @@
 // basically this is an index for the directory
 module.exports = {
   Habit: require("./habit"),
-  Reward: require("./reward")
-  User: require("./Users")
+  Reward: require("./reward"),
+  User: require("./users")
 }

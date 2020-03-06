@@ -8,6 +8,7 @@ import Profile from "./pages/Profile/Profile";
 import Auth from "./pages/Auth/Auth.js";
 import NoMatch from "./pages/NoMatch";
 import LoginNav from "./components/Nav/LoginNav";
+import Nav from "./components/Nav";
 import { Container } from 'reactstrap';
 import UserProvider from "./context";
 import { HabitProvider } from "./utils/GlobalHabitState"; 
@@ -17,8 +18,9 @@ import { RewardProvider } from "./utils/GlobalRewardState";
 function App() {
     return (
       <>
-      <UserProvider>
-      <Router>
+        <UserProvider>
+        <Router>
+          <Nav/>
           <HabitProvider>
             <Switch>
               <Route exact path="/habits" component={Habits}/>            
@@ -37,9 +39,8 @@ function App() {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/"  component={() => <Auth action="login" />}  />
           </Switch>
-
-      </Router>
-      </UserProvider>
+          </Router>
+        </UserProvider>
       </>
     );
 }
