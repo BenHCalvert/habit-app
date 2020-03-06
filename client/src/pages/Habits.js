@@ -76,18 +76,18 @@ console.log("habits : ", state.habits);
       <Row>
         { state.habits.length ? (
           <List>
-            {state.habits.map(habit => (
-              <ListItem key={habit._id}>
+            {/* {state.habits.map(habit => ( */}
+              {/* <ListItem key={habit._id}> */}
                   {/* <Link to={"habits/" + habit._id}> */}
-                  <a className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}>
-                      {habit.habitName}
-                  </a>
+                  {/* <a className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}> */}
+                      {/* {habit.habitName} */}
+                  {/* </a> */}
                   {/* </Link>  */}
-                  {habit.weight}
+                  {/* {habit.weight} */}
                   {/* <StarChart/> */}
-                  <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
-              </ListItem>
-            ))}
+                  {/* <DeleteBtn onClick={() => deleteHabit(habit._id)}/> */}
+              {/* </ListItem> */}
+            {/* ))} */}
           </List>
         ) : (
             <h3> No habits yet specified</h3>
@@ -96,7 +96,7 @@ console.log("habits : ", state.habits);
       <Row>
         {/* <StarChart/> */}
         <a onClick={() => clearCurrentHabitState()}>
-         <AddBtnModel />
+          <AddBtnModel />
         </a>
         <Modal/>
       </Row>
