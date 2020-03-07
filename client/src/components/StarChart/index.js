@@ -6,19 +6,18 @@ import DayOfWk from '../DayOfWk';
 
 export function StarChart(props) {
     const [days, setDays] = useState({
-        sunday: props.sunday,
-        monday: props.monday,
-        tuesday: props.tuesday,
-        wednesday: props.wednesday,
-        thursday: props.thursday,
-        friday: props.friday,
-        saturday: props.saturday
+        sunday: props.week.sunday,
+        monday: props.week.monday,
+        tuesday: props.week.tuesday,
+        wednesday: props.week.wednesday,
+        thursday: props.week.thursday,
+        friday: props.week.friday,
+        saturday: props.week.saturday
     });
 
     console.log('props', props);
 
-    const handleClick = (day, e) => {
-        e.preventDefault();
+    const handleClick = (day) => {
         console.log(day);
         console.log('state value', days[day])
         if (days[day] === false) {
@@ -26,11 +25,8 @@ export function StarChart(props) {
         } if (days[day] === true) {
             
             setDays({ ...days, [day]: false });
-        }
-        
-
-        // BELOW THIS IS FROM Gabe's CreateHabitForm
-        // Functions to make API calls when user changes day of week to star
+        }  
+  
 
         console.log("Updating existing", days[day])
         // API.updateHabit({
@@ -127,16 +123,6 @@ export function StarChart(props) {
 
 
                 </div>
-                <center>
-                    <div className="row">
-                        <div className="col s3">
-                            <a class="waves-effect waves-light btn-small amber lighten-2">Complete</a>
-                        </div>
-                        <div className="col s3 offset-s6">
-                            <a class="waves-effect waves-light btn-small red darken-3">Missed</a>
-                        </div>
-                    </div>
-                </center>
             </div>
         </React.Fragment>
     );
