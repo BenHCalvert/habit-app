@@ -4,15 +4,15 @@ import API from "../../utils/API";
 import GoldStar from '../GoldStarOfficial';
 import DayOfWk from '../DayOfWk';
 
-export function StarChart() {
+export function StarChart(props) {
     const [days, setDays] = useState({
-        sunday: false,
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thursday: false,
-        friday: false,
-        saturday: false
+        sunday: props.sunday,
+        monday: props.monday,
+        tuesday: props.tuesday,
+        wednesday: props.wednesday,
+        thursday: props.thursday,
+        friday: props.friday,
+        saturday: props.saturday
     });
 
     const handleClick = (day, e) => {        
@@ -28,9 +28,16 @@ export function StarChart() {
         // Functions to make API calls when user changes day of week to star
         e.preventDefault();
      
-      console.log("Updating existing",days[day])
+      console.log("Updating existing", days[day])
 
       API.updateHabit({
+        week.sunday: days[day],
+        week.monday: days[day], 
+        week.tuesday: days[day], 
+        week.wednesday: days[day], 
+        week.thursday: days[day], 
+        week.friday: days[day], 
+        week.saturday: days[day],  
         _id: formInput._id,
         date: formInput.date,
         userId: "userId1",
@@ -57,8 +64,6 @@ export function StarChart() {
     e.target.habitName.value = "";
     e.target.weight.value = "";
     e.target.dayTotal.value = "";
-
-
     };
 
     useEffect(() => {

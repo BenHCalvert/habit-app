@@ -14,14 +14,32 @@ const habitSeed = [
     userId: "userId1",
     habitName: "Picking ones nose",
     dayTotal: 14,
-    weight: 1 
+    weight: 1,
+    week: {
+      sunday: true,
+      monday: false,
+      tuesday: true,
+      wednesday: true,
+      thursday: true,
+      friday: false,
+      saturday:true
+    } 
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     habitName: "Picking ones friends nose",
     dayTotal: 14,
-    weight: 2 
+    weight: 2,
+    week: {
+      sunday: true,
+      monday: true,
+      tuesday: false,
+      wednesday: true,
+      thursday: false,
+      friday: true,
+      saturday:true
+    }  
   }
 ];
 
