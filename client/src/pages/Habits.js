@@ -101,7 +101,7 @@ console.log("habits : ", state.habits);
                     {habit.weight}
                   </td>
                   <td>
-                    {/* <StarChart/> */} starchart here
+                    {/* <StarChart/>  */} Starchart here
                   </td>
                   <td>
                     <DeleteBtn onClick={() => deleteHabit(habit._id)}/>

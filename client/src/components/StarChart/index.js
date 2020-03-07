@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actions";
+import API from "../../utils/API";
 import GoldStar from '../GoldStarOfficial';
 import DayOfWk from '../DayOfWk';
 
@@ -13,10 +15,7 @@ export function StarChart() {
         saturday: false
     });
 
-    const handleClick = day => {
-        // days.map( day => (
-        //     console.log("here",[day],day)
-        // ));
+    const handleClick = (day, e) => {        
         console.log(day);
         console.log('state value', days[day])
         if (days[day] === false) {
@@ -24,6 +23,42 @@ export function StarChart() {
         } if (days[day] === true) {
             setDays({ ...days, [day]: false });
         }
+
+        // BELOW THIS IS FROM Gabe's CreateHabitForm
+        // Functions to make API calls when user changes day of week to star
+        e.preventDefault();
+     
+      console.log("Updating existing",days[day])
+
+      API.updateHabit({
+        _id: formInput._id,
+        date: formInput.date,
+        userId: "userId1",
+        habitName: formInput.habitName,
+        dayTotal: formInput.dayTotal,
+        weight: formInput.weight
+      })
+      .then(res => {
+        console.log("Habit update res",res);
+        dispatch({
+          type: UPDATE_HABIT,
+          habit: res.data
+        });
+      })
+      .catch(err => console.log(err));   
+
+    
+    dispatch({
+      type: SET_CURRENT_HABIT,
+      habit: {}
+    })
+
+    setFormInput({});
+    e.target.habitName.value = "";
+    e.target.weight.value = "";
+    e.target.dayTotal.value = "";
+
+
     };
 
     useEffect(() => {
@@ -107,4 +142,5 @@ export function StarChart() {
         </React.Fragment>
     );
 }
+
 export default StarChart;
