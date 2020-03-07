@@ -15,45 +15,48 @@ export function StarChart(props) {
         saturday: props.saturday
     });
 
+    console.log('props', props);
+
     const handleClick = (day, e) => {
+        e.preventDefault();
         console.log(day);
         console.log('state value', days[day])
         if (days[day] === false) {
             setDays({ ...days, [day]: true });
         } if (days[day] === true) {
+            
             setDays({ ...days, [day]: false });
         }
+        
 
         // BELOW THIS IS FROM Gabe's CreateHabitForm
         // Functions to make API calls when user changes day of week to star
-        e.preventDefault();
 
         console.log("Updating existing", days[day])
+        // API.updateHabit({
+        //     week.sunday: days[day],
+        //     week.monday: days[day],
+        //     week.tuesday: days[day],
+        //     week.wednesday: days[day],
+        //     week.thursday: days[day],
+        //     week.friday: days[day],
+        //     week.saturday: days[day],
+        //     _id: _id
+        // })
+        //     .then(res => {
+        //         console.log("Habit update res", res);
+        //         dispatch({
+        //             type: UPDATE_HABIT,
+        //             habit: res.data
+        //         });
+        //     })
+        //     .catch(err => console.log(err));
 
-        API.updateHabit({
-            week.sunday: days[day],
-            week.monday: days[day],
-            week.tuesday: days[day],
-            week.wednesday: days[day],
-            week.thursday: days[day],
-            week.friday: days[day],
-            week.saturday: days[day],
-            _id: formInput._id
-        })
-            .then(res => {
-                console.log("Habit update res", res);
-                dispatch({
-                    type: UPDATE_HABIT,
-                    habit: res.data
-                });
-            })
-            .catch(err => console.log(err));
 
-
-        dispatch({
-            type: SET_CURRENT_HABIT,
-            habit: {}
-        })
+        // dispatch({
+        //     type: SET_CURRENT_HABIT,
+        //     habit: {}
+        // })
 
     };
 

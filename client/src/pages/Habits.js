@@ -101,7 +101,7 @@ console.log("habits : ", state.habits);
                     {habit.weight}
                   </td>
                   <td>
-                    <StarChart week={habit.week}/> 
+                    <StarChart week={habit.week} id={habit._id}/> 
                     Starchart here
                   </td>
                   <td>
