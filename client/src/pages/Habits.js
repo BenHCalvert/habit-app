@@ -65,7 +65,8 @@ function Habits() {
 
   useEffect(() => {
     loadHabits()
-  }, [state])
+  }, [])
+  // }, [state.habits])
 
 // debug
 console.log("habits : ", state.habits);

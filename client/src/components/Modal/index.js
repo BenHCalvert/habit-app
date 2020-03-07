@@ -4,6 +4,7 @@ import M from "materialize-css";
 
 import CreateHabitForm from '../CreateHabitForm';
 import CreateRewardForm from '../CreateRewardForm';
+import RedeemModalContent from '../RedeemModalContent';
 
 class Modal extends Component {
   componentDidMount() {
@@ -40,14 +41,16 @@ class Modal extends Component {
   render() {
     console.log("model render", this.props.type);
               console.log("in switch",this.props.type);
-              let formType = "No Form specified";
+              let modalContentType = "No Form specified";
               switch (this.props.type) {
               case "habit":   
-                formType = <CreateHabitForm/>;
+                modalContentType = <CreateHabitForm/>;
                 break;
               case "rewards":
-                // formType = "rewards form goes here";
-                formType = <CreateRewardForm/>;
+                modalContentType = <CreateRewardForm/>;
+                break;
+              case "redeem":
+                modalContentType = <RedeemModalContent/>;
                 break;
               }
     return (
@@ -61,7 +64,7 @@ class Modal extends Component {
           className="modal"
         >
           <div className="modal-content">
-            {[formType]}
+            {[modalContentType]}
           </div>
           <div className="modal-footer">
             <a href="#" className="modal-close waves-effect waves-purple btn-flat">

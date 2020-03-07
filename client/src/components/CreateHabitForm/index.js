@@ -26,7 +26,6 @@ function CreateHabitForm() {
   },[state.currentHabit]);
   // },[]);
 
-
   useEffect(() => {
     console.log("use effect formInput",formInput);
   },[formInput]);

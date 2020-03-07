@@ -7,8 +7,7 @@ import AddBtnModal from "../components/AddBtnModal";
 import DeleteBtn from "../components/DeleteBtn";
 import EarnedStars from "../components/EarnedStars";
 import Modal from '../components/Modal';
-import Nav from "../components/Nav";
-import StarChart from '../components/StarChart';
+import RedeemBtn from "../components/RedeemBtn";
 
 import { useRewardContext } from '../utils/GlobalRewardState';
 import { GET_REWARDS, REMOVE_REWARD, SET_CURRENT_REWARD } from '../utils/actions';
@@ -66,7 +65,8 @@ function Rewards() {
 
   useEffect(() => {
     loadRewards()
-  }, [state])
+  }, [])
+  // }, [state.rewards])
 
 // debug
 console.log("rewards : ", state.rewards);
@@ -101,7 +101,7 @@ console.log("rewards : ", state.rewards);
                     {reward.cost}
                   </td>
                   <td>
-                    {/* <StarChart/> */} redeem here
+                    <RedeemBtn/>
                   </td>
                   <td>
                     <DeleteBtn onClick={() => deleteReward(reward._id)}/>
@@ -118,7 +118,7 @@ console.log("rewards : ", state.rewards);
         <span onClick={() => clearCurrentRewardState()}>
           <AddBtnModal/>
         </span>
-        <Modal type="rewards"/>
+        <Modal type="redeem"/>
       </Row>
 </Container>
   );

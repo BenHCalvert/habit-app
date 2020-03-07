@@ -51,11 +51,6 @@ const reducer = (state, action) => {
   }
 };
 
-      // _id: 0,
-      // userId: "",
-      // habitName: "",
-      // dayTotal: "",
-      // weight: "" 
 const HabitProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     habits: [],
