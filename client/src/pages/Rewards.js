@@ -3,7 +3,7 @@ import API from "../utils/API";
 
 import { Row, Container } from "../components/Grid";
 
-import AddBtnModel from "../components/AddButton";
+import AddBtnModal from "../components/AddBtnModal";
 import DeleteBtn from "../components/DeleteBtn";
 import EarnedStars from "../components/EarnedStars";
 import Modal from '../components/Modal';
@@ -116,9 +116,9 @@ console.log("rewards : ", state.rewards);
       </Row>
       <Row>
         <span onClick={() => clearCurrentRewardState()}>
-         {/* <AddBtnModel /> */}
+          <AddBtnModal/>
         </span>
-        {/* <Modal/> */}
+        <Modal type="rewards"/>
       </Row>
 </Container>
   );
