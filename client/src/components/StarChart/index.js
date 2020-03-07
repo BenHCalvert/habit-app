@@ -29,31 +29,19 @@ export function StarChart(props) {
   
 
         console.log("Updating existing", days[day])
-        // API.updateHabit({
-        //     week.sunday: days[day],
-        //     week.monday: days[day],
-        //     week.tuesday: days[day],
-        //     week.wednesday: days[day],
-        //     week.thursday: days[day],
-        //     week.friday: days[day],
-        //     week.saturday: days[day],
-        //     _id: _id
-        // })
-        //     .then(res => {
-        //         console.log("Habit update res", res);
-        //         dispatch({
-        //             type: UPDATE_HABIT,
-        //             habit: res.data
-        //         });
-        //     })
-        //     .catch(err => console.log(err));
-
-
-        // dispatch({
-        //     type: SET_CURRENT_HABIT,
-        //     habit: {}
-        // })
-
+        API.updateHabit({
+            week: {
+                sunday: days[day],
+                monday: days[day],
+                tuesday: days[day],
+                wednesday: days[day],
+                thursday: days[day],
+                friday: days[day],
+                saturday: days[day]
+            },
+            _id: props.id
+        })
+        .catch(err => console.log(err));
     };
 
     useEffect(() => {
@@ -63,9 +51,6 @@ export function StarChart(props) {
     return (
         <React.Fragment>
             <div className='chartBorder'>
-                <div className="Row">
-                    <center><h6>Habit Name</h6></center>
-                </div>
                 <div className="row">
                     <center>
                         <div className="Habit">
