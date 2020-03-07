@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 import { Link } from "react-router-dom";
+import "./Signup.css";
 
 class Signup extends Component {
     state = {
@@ -162,28 +163,28 @@ class Signup extends Component {
                 <Form>
                     <FormGroup>
                         <Label for="firstname">Firtname</Label>
-                        <Input type="text" name="firstname" id="firstname" placeholder="firstname" value={this.props.firstname} onChange={this.props.handleInputChange} valid={this.state.validFirstname} />
+                        <Input type="text" name="firstname" className="firstname" placeholder="firstname" value={this.props.firstname} onChange={this.props.handleInputChange} valid={this.state.validFirstname} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastname">Lastname</Label>
-                        <Input type="text" name="lastname" id="lastname" placeholder="lastname" value={this.props.lastname} onChange={this.props.handleInputChange} valid={this.state.validLastname} />
+                        <Input type="text" name="lastname" className="lastname" placeholder="lastname" value={this.props.lastname} onChange={this.props.handleInputChange} valid={this.state.validLastname} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">Email</Label>
-                        <Input type="email" name="email" id="email" placeholder="email@email.com" value={this.props.email} onChange={this.props.handleInputChange} valid={this.state.validEmail} />
+                        <Input type="email" name="email" className="email" placeholder="email@email.com" value={this.props.email} onChange={this.props.handleInputChange} valid={this.state.validEmail} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="username">Username</Label>
-                        <Input type="text" name="username" id="username" placeholder="username" value={this.props.username} onChange={this.props.handleInputChange} valid={this.state.validUsername} />
+                        <Input type="text" name="username" className="username" placeholder="username" value={this.props.username} onChange={this.props.handleInputChange} valid={this.state.validUsername} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Password</Label>
-                        <Input type="password" name="password" id="password" placeholder="password" value={this.props.password} onChange={this.props.handleInputChange} valid={this.state.validPassword} />
+                        <Input type="password" name="password" className="password" placeholder="password" value={this.props.password} onChange={this.props.handleInputChange} valid={this.state.validPassword} />
                         <FormText>{this.state.passwordMessage}</FormText>
                     </FormGroup>
                     <FormGroup>
                         <Label for="confirmPassword">Confirm Password</Label>
-                        <Input type="password" name="password" id="confirmPassword" placeholder="confirm password" value={this.state.password} onChange={this.handleInputChange} valid={this.state.confirmPassword} />
+                        <Input type="password" name="password" className="confirmPassword" placeholder="confirm password" value={this.state.password} onChange={this.handleInputChange} valid={this.state.confirmPassword} />
                     </FormGroup>
                     {/* if all fields are valid, allow the user to submit the form */}
                     {(this.state.validFirstname && this.state.validLastname && this.state.validEmail && this.state.validUsername && this.state.validPassword && this.state.confirmPassword) ? (
