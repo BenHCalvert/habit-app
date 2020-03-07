@@ -107,5 +107,4 @@ export function StarChart() {
         </React.Fragment>
     );
 }
-
 export default StarChart;

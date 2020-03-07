@@ -3,11 +3,10 @@ import API from "../utils/API";
 
 import { Row, Container } from "../components/Grid";
 
-import AddBtnModel from "../components/AddButton";
+import AddBtnModal from "../components/AddBtnModal";
 import DeleteBtn from "../components/DeleteBtn";
 import EarnedStars from "../components/EarnedStars";
 import Modal from '../components/Modal';
-import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
@@ -67,6 +66,7 @@ function Habits() {
   useEffect(() => {
     loadHabits()
   }, [])
+  // }, [state.habits])
 
 // debug
 console.log("habits : ", state.habits);
@@ -116,10 +116,10 @@ console.log("habits : ", state.habits);
       </Row>
       <Row>
         <span onClick={() => clearCurrentHabitState()}>
-         <AddBtnModel />
+         <AddBtnModal />
         </span>
 
-        <Modal/>
+        <Modal type="habit"/>
       </Row>
 </Container>
   );

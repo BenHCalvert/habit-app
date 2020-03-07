@@ -31,6 +31,11 @@ export default {
   getReward: function(id) {
     return axios.get("/api/rewards/" + id);
   },
+  // Updates the reward with the given id
+  updateReward: function(rewardData) {
+    console.log(`util/API/ rewardData ${rewardData._id} data ${rewardData}`)
+    return axios.put("/api/rewards/" + rewardData._id, rewardData);
+  },
   // Deletes the rewards with the given id
   deleteReward: function(id) {
     return axios.delete("/api/rewards/" + id);

@@ -3,6 +3,8 @@ import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css";
 
 import CreateHabitForm from '../CreateHabitForm';
+import CreateRewardForm from '../CreateRewardForm';
+import RedeemModalContent from '../RedeemModalContent';
 
 class Modal extends Component {
   componentDidMount() {
@@ -37,15 +39,23 @@ class Modal extends Component {
   }
 
   render() {
+    console.log("model render", this.props.type);
+              console.log("in switch",this.props.type);
+              let modalContentType = "No Form specified";
+              switch (this.props.type) {
+              case "habit":   
+                modalContentType = <CreateHabitForm/>;
+                break;
+              case "rewards":
+                modalContentType = <CreateRewardForm/>;
+                break;
+              case "redeem":
+                modalContentType = <RedeemModalContent/>;
+                break;
+              }
     return (
       <>
-        {/* <a
-          className="waves-effect waves-light btn modal-trigger"
-          data-target="modal1"
-        >
-          Modal
-        </a> */}
-
+       { console.log("model render return", this.props.type) }
         <div
           ref={Modal => {
             this.Modal = Modal;
@@ -53,10 +63,8 @@ class Modal extends Component {
           id="modal1"
           className="modal"
         >
-          {/* If you want Bottom Sheet Modal then add 
-        bottom-sheet class */}
           <div className="modal-content">
-            <CreateHabitForm/>
+            {[modalContentType]}
           </div>
           <div className="modal-footer">
             <a href="#" className="modal-close waves-effect waves-purple btn-flat">
