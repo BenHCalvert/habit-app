@@ -22,8 +22,8 @@ const habitSeed = [
       wednesday: true,
       thursday: true,
       friday: false,
-      saturday:true
-    } 
+      saturday: true
+    }
   },
   {
     date: new Date(Date.now()),
@@ -38,8 +38,8 @@ const habitSeed = [
       wednesday: true,
       thursday: false,
       friday: true,
-      saturday:true
-    }  
+      saturday: true
+    }
   }
 ];
 
@@ -48,19 +48,19 @@ const rewardSeed = [
     date: new Date(Date.now()),
     userId: "userId1",
     rewardName: "Icecream sandwich",
-    cost: 10 
+    cost: 10
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     rewardName: "3 Beers at one time",
-    cost: 30 
+    cost: 30
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     rewardName: "New road bike",
-    cost: 300 
+    cost: 300
   }
 ];
 

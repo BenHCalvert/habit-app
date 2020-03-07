@@ -15,7 +15,7 @@ export function StarChart(props) {
         saturday: props.saturday
     });
 
-    const handleClick = (day, e) => {        
+    const handleClick = (day, e) => {
         console.log(day);
         console.log('state value', days[day])
         if (days[day] === false) {
@@ -27,43 +27,34 @@ export function StarChart(props) {
         // BELOW THIS IS FROM Gabe's CreateHabitForm
         // Functions to make API calls when user changes day of week to star
         e.preventDefault();
-     
-      console.log("Updating existing", days[day])
 
-      API.updateHabit({
-        week.sunday: days[day],
-        week.monday: days[day], 
-        week.tuesday: days[day], 
-        week.wednesday: days[day], 
-        week.thursday: days[day], 
-        week.friday: days[day], 
-        week.saturday: days[day],  
-        _id: formInput._id,
-        date: formInput.date,
-        userId: "userId1",
-        habitName: formInput.habitName,
-        dayTotal: formInput.dayTotal,
-        weight: formInput.weight
-      })
-      .then(res => {
-        console.log("Habit update res",res);
+        console.log("Updating existing", days[day])
+
+        API.updateHabit({
+            week.sunday: days[day],
+            week.monday: days[day],
+            week.tuesday: days[day],
+            week.wednesday: days[day],
+            week.thursday: days[day],
+            week.friday: days[day],
+            week.saturday: days[day],
+            _id: formInput._id
+        })
+            .then(res => {
+                console.log("Habit update res", res);
+                dispatch({
+                    type: UPDATE_HABIT,
+                    habit: res.data
+                });
+            })
+            .catch(err => console.log(err));
+
+
         dispatch({
-          type: UPDATE_HABIT,
-          habit: res.data
-        });
-      })
-      .catch(err => console.log(err));   
+            type: SET_CURRENT_HABIT,
+            habit: {}
+        })
 
-    
-    dispatch({
-      type: SET_CURRENT_HABIT,
-      habit: {}
-    })
-
-    setFormInput({});
-    e.target.habitName.value = "";
-    e.target.weight.value = "";
-    e.target.dayTotal.value = "";
     };
 
     useEffect(() => {
@@ -78,57 +69,57 @@ export function StarChart(props) {
                 </div>
                 <div className="row">
                     <center>
-                    <div className="Habit">
-                        <div className="col s1">
-                            {days.sunday ? (
-                                <GoldStar day="sunday" handleClick={handleClick} />
-                            ) : (
-                                    <DayOfWk day="sunday" handleClick={handleClick} />
-                                )}
+                        <div className="Habit">
+                            <div className="col s1">
+                                {days.sunday ? (
+                                    <GoldStar day="sunday" handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="sunday" handleClick={handleClick} />
+                                    )}
+                            </div>
+                            <div className="col s1">
+                                {days.monday ? (
+                                    <GoldStar day="monday" handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="monday" handleClick={handleClick} />
+                                    )}
+                            </div>
+                            <div className="col s1">
+                                {days.tuesday ? (
+                                    <GoldStar day='tuesday' handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="tuesday" handleClick={handleClick} />
+                                    )}
+                            </div>
+                            <div className="col s1">
+                                {days.wednesday ? (
+                                    <GoldStar day='wednesday' handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="wednesday" handleClick={handleClick} />
+                                    )}
+                            </div>
+                            <div className="col s1">
+                                {days.thursday ? (
+                                    <GoldStar day='thursday' handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="thursday" handleClick={handleClick} />
+                                    )}
+                            </div>
+                            <div className="col s1">
+                                {days.friday ? (
+                                    <GoldStar day='friday' handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="friday" handleClick={handleClick} />
+                                    )}
+                            </div>
+                            <div className="col s1">
+                                {days.saturday ? (
+                                    <GoldStar day='saturday' handleClick={handleClick} />
+                                ) : (
+                                        <DayOfWk day="saturday" handleClick={handleClick} />
+                                    )}
+                            </div>
                         </div>
-                        <div className="col s1">
-                            {days.monday ? (
-                                <GoldStar day="monday" handleClick={handleClick} />
-                            ) : (
-                                    <DayOfWk day="monday" handleClick={handleClick} />
-                                )}
-                        </div>
-                        <div className="col s1">
-                            {days.tuesday ? (
-                                <GoldStar day='tuesday' handleClick={handleClick} />
-                            ) : (
-                                    <DayOfWk day="tuesday" handleClick={handleClick} />
-                                )}
-                        </div>
-                        <div className="col s1">
-                            {days.wednesday ? (
-                                <GoldStar day='wednesday' handleClick={handleClick} />
-                            ) : (
-                                    <DayOfWk day="wednesday" handleClick={handleClick} />
-                                )}
-                        </div>
-                        <div className="col s1">
-                        {days.thursday ? (
-                            <GoldStar day='thursday' handleClick={handleClick} />
-                        ) : (
-                                <DayOfWk day="thursday" handleClick={handleClick} />
-                            )}
-                        </div>
-                        <div className="col s1">
-                            {days.friday ? (
-                                <GoldStar day='friday' handleClick={handleClick} />
-                            ) : (
-                                    <DayOfWk day="friday" handleClick={handleClick} />
-                                )}
-                        </div>
-                        <div className="col s1">
-                            {days.saturday ? (
-                                <GoldStar day='saturday' handleClick={handleClick}   />
-                            ) : (
-                                    <DayOfWk day="saturday" handleClick={handleClick} />
-                                )}
-                        </div>
-                    </div>
                     </center>
 
 
