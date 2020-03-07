@@ -7,7 +7,6 @@ import AddBtnModal from "../components/AddBtnModal";
 import DeleteBtn from "../components/DeleteBtn";
 import EarnedStars from "../components/EarnedStars";
 import Modal from '../components/Modal';
-import Nav from "../components/Nav";
 import StarChart from '../components/StarChart';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
@@ -66,7 +65,7 @@ function Habits() {
 
   useEffect(() => {
     loadHabits()
-  }, [])
+  }, [state])
 
 // debug
 console.log("habits : ", state.habits);

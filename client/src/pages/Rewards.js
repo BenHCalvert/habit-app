@@ -66,7 +66,7 @@ function Rewards() {
 
   useEffect(() => {
     loadRewards()
-  }, [])
+  }, [state])
 
 // debug
 console.log("rewards : ", state.rewards);
