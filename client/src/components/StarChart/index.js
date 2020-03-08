@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import GoldStar from '../goldStar';
+import GoldStar from '../GoldStar';
 import DayOfWk from '../DayOfWk';
 
 export function StarChart() {
