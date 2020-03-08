@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../../components/Login";
 import Signup from "../../components/Signup";
-// import "./Auth.scss";
+import "./Auth.css";
 import { UserConsumer } from '../../context';
 
 function Auth(props) {
@@ -9,6 +9,7 @@ function Auth(props) {
     <UserConsumer>
       {({ data, inputChange, handleLogin, handleSignup }) => (
         <div className="authBox">
+          <div className= "text center">
           {(props.action === "login") ? (
             <Login
               username={data.username}
@@ -27,7 +28,7 @@ function Auth(props) {
                 handleSignup={handleSignup}
                 message={data.failureMessage}
               />
-            )}
+            )}</div>
         </div>
       )}
     </UserConsumer>

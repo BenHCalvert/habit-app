@@ -1,8 +1,8 @@
 import React from "react";
-// import "./Profile.scss";
+import "./Profile.css";
 import { UserConsumer } from '../../context';
 import { Button } from "reactstrap";
-import { Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 function Profile(props) {
@@ -10,10 +10,10 @@ function Profile(props) {
         // console.log(this.props),
         <UserConsumer>
         {({ data, logout }) => (
-        <div className="profileBox">
+        <div className="profileBox text-center">
             {(data.loggedIn)? (
                 <div>
-                    <h1> Welcome back {data.user.firstname}</h1>
+                    <h1> View Your Starcharts, {data.user.firstname}</h1>
                     <Button onClick={logout}>Logout</Button>
                 </div>
             ): (
