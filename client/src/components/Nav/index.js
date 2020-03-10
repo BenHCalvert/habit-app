@@ -5,9 +5,11 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export function Nav() {
     return (
-        <>
+        <> 
+    
             <nav>
-                <div className="nav-wrapper">
+                    
+                    <div className="nav-wrapper">
                     <a href="#!" className="brand-logo">Yourname - Star Chart</a>
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">

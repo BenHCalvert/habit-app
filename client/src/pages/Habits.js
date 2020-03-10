@@ -8,6 +8,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import EarnedStars from "../components/EarnedStars";
 import Modal from '../components/Modal';
 import StarChart from '../components/StarChart';
+import { UserConsumer } from '../context';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
 import { updateStars } from '../utils/StarCountManager';
@@ -17,7 +18,7 @@ import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT, ADD_STARS } from '../utils
 
 import "./style.css";
 
-function Habits() {
+function Habits(props) {
   const [state, dispatch] = useHabitContext([]);
 
   const loadHabits = () => {
@@ -77,11 +78,16 @@ let username = "Thunder";
 
 // render function
   return (
-    <Container fluid>
+   
+    <Container fluid> 
+    <UserConsumer>
+    {({ data }) => (
       <Row>
-        <h3>Keep up the good work -username- </h3>
+        <h3>Keep up the good work {data.user.firstname} </h3>
+        
         <EarnedStars/>
-      </Row>
+      </Row>)}
+      </UserConsumer>
       <Row>
         { state.habits.length ? (
           <table>
@@ -125,6 +131,7 @@ let username = "Thunder";
 
         <Modal type="habit"/>
       </Row>
+
 </Container>
   );
 }
