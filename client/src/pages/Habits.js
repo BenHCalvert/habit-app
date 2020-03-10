@@ -79,7 +79,7 @@ console.log("habits : ", state.habits);
     <UserConsumer>
     {({ data }) => (
       <Row>
-        <h3>Keep up the good work {data.user.firstname} </h3>
+        {/* <h3>Keep up the good work {data.user.firstname} </h3> */}
         
         <EarnedStars/>
       </Row>)}

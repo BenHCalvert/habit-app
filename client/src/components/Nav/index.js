@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 // import { Default } from "./LoginNav";
+import "./Nav.css"
 
 
 export function Nav() {
@@ -10,7 +11,7 @@ export function Nav() {
             <nav>
                     
                     <div className="nav-wrapper">
-                    <a href="#!" className="brand-logo">Yourname - Star Chart</a>
+                    <a href="/habits" className="brand-logo">Yourname - Star Chart</a>
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
 
