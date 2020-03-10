@@ -33,10 +33,15 @@ const usersSchema = new Schema({
     unique: false,
     required: true,
     default: false
-},
+  },
   createdAt: {
       type: Date,
       default: Date.now()
+  },
+  stars: {
+    type: Number,
+    required: true,
+    default: 0
   }
 });
 

@@ -10,7 +10,9 @@ import Modal from '../components/Modal';
 import StarChart from '../components/StarChart';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
-import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
+import { updateStars } from '../utils/StarCountManager';
+
+import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT, ADD_STARS } from '../utils/actions';
 
 
 import "./style.css";
@@ -71,6 +73,8 @@ function Habits() {
 // debug
 console.log("habits : ", state.habits);
 
+let username = "Thunder";
+
 // render function
   return (
     <Container fluid>
@@ -84,7 +88,7 @@ console.log("habits : ", state.habits);
             <thead>
               <tr>
                 <th>Habit</th>
-                <th>Weight</th>
+                
                 <th>This weeks Chart</th>
                 <th>Delete</th>
               </tr>
@@ -101,7 +105,7 @@ console.log("habits : ", state.habits);
                     {habit.weight}
                   </td>
                   <td>
-                    {/* <StarChart/> */} starchart here
+                    {/* <StarChart/> */} <span onClick={() => updateStars(username)}>starchart here </span>
                   </td>
                   <td>
                     <DeleteBtn onClick={() => deleteHabit(habit._id)}/>

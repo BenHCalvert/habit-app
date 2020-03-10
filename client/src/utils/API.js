@@ -44,7 +44,11 @@ export default {
   saveReward: function(rewardsData) {
     return axios.post("/api/rewards",rewardsData);
   },
-
+  // used to modify number of stars up or down
+  updateStarValue: function(starData) {
+    console.log(`util/API/ addStar ${starData._id} data ${starData}`)
+    return axios.put("/api/star"+starData._id, starData.stars);
+  },
   // logs in user
   login: function(loginInfo) {
     return axios.post("/api/users/login", loginInfo);
