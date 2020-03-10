@@ -11,7 +11,7 @@ import StarChart from '../components/StarChart';
 import { UserConsumer } from '../context';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
-import { updateStars } from '../utils/StarCountManager';
+import { updateStars, loadStars } from '../utils/StarCountManager';
 
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT, ADD_STARS } from '../utils/actions';
 
@@ -20,6 +20,7 @@ import "./style.css";
 
 function Habits(props) {
   const [state, dispatch] = useHabitContext([]);
+  const [starState, setStarState] = useState(0);
 
   const loadHabits = () => {
     API.getHabits()
@@ -69,12 +70,15 @@ function Habits(props) {
   useEffect(() => {
     loadHabits()
   }, [])
-  // }, [state.habits])
+
+  useEffect(() => {
+    console.log("in use effect for userconsumer");
+    loadHabits()
+  }, [starState])
+
 
 // debug
 console.log("habits : ", state.habits);
-
-let username = "Thunder";
 
 // render function
   return (
@@ -84,10 +88,10 @@ let username = "Thunder";
     {({ data }) => (
       <Row>
         <h3>Keep up the good work {data.user.firstname} </h3>
-        
-        <EarnedStars/>
+        <EarnedStars stars={data.user.stars}/>
+        {setStarState(data.user.stars)}
       </Row>)}
-      </UserConsumer>
+    </UserConsumer>
       <Row>
         { state.habits.length ? (
           <table>
@@ -111,7 +115,16 @@ let username = "Thunder";
                     {habit.weight}
                   </td>
                   <td>
-                    {/* <StarChart/> */} <span onClick={() => updateStars(username)}>starchart here </span>
+    <UserConsumer>
+          {({ data }) => ( 
+            <>
+              <span onClick={() => updateStars(data.user._id,"+",5)}>add stars </span> 
+              <span onClick={() => updateStars(data.user._id,"-",1)}>minus stars </span> 
+            </>
+          )}
+    </UserConsumer>
+                    {/* <StarChart/> */} 
+                    {/* <span onClick={() => updateStars(username)}>starchart here </span> */}
                   </td>
                   <td>
                     <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
