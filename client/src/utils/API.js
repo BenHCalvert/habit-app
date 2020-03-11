@@ -21,11 +21,11 @@ export default {
   },
   // Saves a habit to the database
   saveHabit: function(habitData) {
-    return axios.post("/api/habits", habitData);
+    return axios.post("/api/habits/", habitData);
   },
   // Gets all rewards
   getRewards: function() {
-    return axios.get("/api/rewards");
+    return axios.get("/api/rewards/");
   },
   // Gets the rewards with the given id
   getReward: function(id) {

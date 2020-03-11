@@ -19,6 +19,7 @@ const reducer = (state, action) => {
       };
 
     case CREATE_HABIT:
+      console.log("CREATE_HABIT",action.habit);
       return {
         ...state,
         habits: [action.habit, ...state.habits]
