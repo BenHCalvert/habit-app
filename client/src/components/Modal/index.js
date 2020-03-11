@@ -67,7 +67,7 @@ class Modal extends Component {
             {[modalContentType]}
           </div>
           <div className="modal-footer">
-            <a href="#" className="modal-close waves-effect waves-purple btn-flat">
+            <a href="#" className="modal-close waves-effect waves-blue-grey lighten-2 btn-flat">
               Cancel
             </a>
           </div>

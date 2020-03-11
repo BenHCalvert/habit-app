@@ -14,6 +14,7 @@ import { useHabitContext } from '../utils/GlobalHabitState';
 import { updateStars, loadStars } from '../utils/StarCountManager';
 
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
+import Nav from "../components/Nav";
 
 
 import "./style.css";
@@ -86,6 +87,7 @@ console.log("habits : ", state.habits);
   return (
 
     <Container fluid> 
+    <Nav/>
     <UserConsumer>
     {({ data }) => (
       <Row>
@@ -99,8 +101,13 @@ console.log("habits : ", state.habits);
             <thead>
               <tr>
                 <th>Habit</th>
+<<<<<<< HEAD
                 
                 <th>This weeks Chart</th>
+=======
+                <th>Weight</th>
+                <th>This Weeks Chart</th>
+>>>>>>> 0c2e40273401890d05cfbcf7100c552420039907
                 <th>Delete</th>
               </tr>
             </thead>

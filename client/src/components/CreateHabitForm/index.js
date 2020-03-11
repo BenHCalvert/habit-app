@@ -4,6 +4,7 @@ import { CREATE_HABIT, UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actio
 import API from "../../utils/API";
 import AddBtn from "../AddBtn";
 import Input from "../Input";
+import "./style.css";
 
 function CreateHabitForm() {
   // let initialState = "";

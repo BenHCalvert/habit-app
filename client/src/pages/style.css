@@ -1,9 +1,31 @@
 .hilite:hover {
-  background-color: #90a4ae;
+  background-color: #78909c ;
 }
 
 th, .hilite, td, h3{
   color: 
   white;
+
+  
+}
+
+th {
+  font-size: 20px;
+  font-family: 'Bungee Inline', cursive;
+  
+}
+
+thead {
+  background-color: #00897b     ;
+}
+
+.row {
+ margin-left: 10%;
+ margin-right: 10%;
+
+}
+.table {
+  border: #78909c ;
+  border-width: 2px;
 }
 
