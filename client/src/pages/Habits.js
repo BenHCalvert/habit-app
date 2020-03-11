@@ -13,14 +13,14 @@ import { UserConsumer } from '../context';
 import { useHabitContext } from '../utils/GlobalHabitState';
 import { updateStars, loadStars } from '../utils/StarCountManager';
 
-import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT, ADD_STARS } from '../utils/actions';
+import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 
 
 import "./style.css";
 
 function Habits(props) {
   const [state, dispatch] = useHabitContext([]);
-  const [starState, setStarState] = useState(0);
+  const [starState, setStarState] = useState();
 
   const loadHabits = () => {
     API.getHabits()
@@ -69,27 +69,28 @@ function Habits(props) {
 
   useEffect(() => {
     loadHabits()
+    console.log("here");
   }, [])
 
   useEffect(() => {
-    console.log("in use effect for userconsumer");
+    // console.log("in use effect for userconsumer");
     loadHabits()
   }, [starState])
 
 
 // debug
 console.log("habits : ", state.habits);
+// console.log("stars: ", starState);
 
 // render function
   return (
-   
+
     <Container fluid> 
     <UserConsumer>
     {({ data }) => (
       <Row>
         <h3>Keep up the good work {data.user.firstname} </h3>
-        <EarnedStars stars={data.user.stars}/>
-        {setStarState(data.user.stars)}
+        <EarnedStars stars={data.user.stars}/> {/* {setStarState(data.user.stars)} */}
       </Row>)}
     </UserConsumer>
       <Row>
@@ -105,7 +106,7 @@ console.log("habits : ", state.habits);
             </thead>
             <tbody>
               {state.habits.map(habit => (
-                <tr>
+                <tr key={habit._id}>
                   <td className='hilite'>
                     <span className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}>
                       {habit.habitName}
