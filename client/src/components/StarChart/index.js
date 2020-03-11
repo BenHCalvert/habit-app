@@ -113,4 +113,6 @@ export function StarChart(props) {
     );
 }
 
+
 export default StarChart;
+
