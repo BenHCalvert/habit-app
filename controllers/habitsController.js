@@ -1,5 +1,9 @@
 const db = require("../models");
 
+const options = {
+  setDefaultsOnInsert: true
+};
+
 // Defining methods for the habitsController
 module.exports = {
   findAll: function(req, res) {
@@ -17,8 +21,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log(req.body);
+    console.log(db.Habit);
     db.Habit
-      .create(req.body)
+      .create(req.body, options)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

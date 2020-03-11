@@ -89,8 +89,14 @@ console.log("habits : ", state.habits);
     <UserConsumer>
     {({ data }) => (
       <Row>
+<<<<<<< HEAD
         <h3>Keep up the good work {data.user.firstname} </h3>
         <EarnedStars stars={data.user.stars}/> {/* {setStarState(data.user.stars)} */}
+=======
+        {/* <h3>Keep up the good work {data.user.firstname} </h3> */}
+        
+        <EarnedStars/>
+>>>>>>> c9449b99e8354db92ebc635335d595a7f074cbc3
       </Row>)}
     </UserConsumer>
       <Row>
@@ -116,6 +122,7 @@ console.log("habits : ", state.habits);
                     {habit.weight}
                   </td>
                   <td>
+<<<<<<< HEAD
     <UserConsumer>
           {({ data }) => ( 
             <>
@@ -126,6 +133,9 @@ console.log("habits : ", state.habits);
     </UserConsumer>
                     {/* <StarChart/> */} 
                     {/* <span onClick={() => updateStars(username)}>starchart here </span> */}
+=======
+                    <StarChart week={habit.week} id={habit._id}/>
+>>>>>>> c9449b99e8354db92ebc635335d595a7f074cbc3
                   </td>
                   <td>
                     <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
