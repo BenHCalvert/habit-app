@@ -22,8 +22,7 @@ export function StarChart(props) {
         console.log('state value', days[day])
         if (days[day] === false) {
             setDays({ ...days, [day]: true });
-        } if (days[day] === true) {
-            
+        } if (days[day] === true) {            
             setDays({ ...days, [day]: false });
         }  
   
@@ -41,6 +40,7 @@ export function StarChart(props) {
             },
             _id: props.id
         })
+        .then(console.log('days updateAPI', days))
         .catch(err => console.log(err));
     };
 
