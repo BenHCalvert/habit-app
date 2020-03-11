@@ -42,7 +42,7 @@ class UserProvider extends Component {
                         user: user.data.user
                     });
                     console.log("log in successful");
-                    window.location.href = '/profile';
+                    window.location.href = '/habits';
                 } else {
                     console.log("Something went wrong :(")
                     console.log(user);
