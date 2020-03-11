@@ -1,3 +1,9 @@
 .hilite:hover {
-  background-color: rgb(129, 240, 101);
+  background-color: #90a4ae;
 }
+
+th, .hilite, td, h3{
+  color: 
+  white;
+}
+
