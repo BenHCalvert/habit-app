@@ -26,6 +26,13 @@ function CreateHabitForm() {
   },[state.currentHabit]);
   // },[]);
 
+  useEffect(
+    () => {
+      console.log("page reload")
+    },
+    [state]
+  )
+
   useEffect(() => {
     console.log("use effect formInput",formInput);
   },[formInput]);
@@ -49,14 +56,23 @@ function CreateHabitForm() {
         userId: "userId1",
         habitName: formInput.habitName,
         dayTotal: formInput.dayTotal,
-        weight: formInput.weight
+        weight: formInput.weight,
+        week: {
+          sunday: false,
+          monday: false,
+          tuesday: false,
+          wednesday: false,
+          thursday: false,
+          friday: false,
+          saturday: false
+        }
       })
       .then(res => {
         console.log("Habit Saved res",res);
         dispatch({
           type: CREATE_HABIT,
           habit: res.data
-        });
+        });       
       })
       .catch(err => console.log(err));
     } else {
