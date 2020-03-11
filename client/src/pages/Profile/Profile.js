@@ -3,11 +3,16 @@ import "./Profile.css";
 import { UserConsumer } from '../../context';
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom"
+import Nav from "../../components/Nav";
+import { Row, Container } from "../../components/Grid";
+
 
 
 function Profile(props) {
     return (
         // console.log(this.props),
+        <Container fluid>
+        <Nav/>
         <UserConsumer>
         {({ data, logout }) => (
         <div className="profileBox text-center">
@@ -26,6 +31,7 @@ function Profile(props) {
         </div>
       )}
       </UserConsumer>
+      </Container>
     )
     
 }

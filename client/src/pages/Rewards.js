@@ -13,6 +13,7 @@ import { useRewardContext } from '../utils/GlobalRewardState';
 import { GET_REWARDS, REMOVE_REWARD, SET_CURRENT_REWARD } from '../utils/actions';
 
 import "./style.css";
+import Nav from "../components/Nav";
 
 function Rewards() {
   const [state, dispatch] = useRewardContext([]);
@@ -74,6 +75,7 @@ console.log("rewards : ", state.rewards);
 // render function
   return (
     <Container fluid>
+      <Nav/>
       <Row>
         <h3>Add or redeem reward</h3>
         {/* <EarnedStars/> */}
