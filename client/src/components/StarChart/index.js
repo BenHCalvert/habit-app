@@ -11,6 +11,8 @@ import GreyStarTh from '../GreyStarOfficial/Th';
 import GreyStarFr from '../GreyStarOfficial/Fr';
 import GreyStarSa from '../GreyStarOfficial/Sa';
 
+import { updateStars, loadStars } from '../../utils/StarCountManager';
+
 export function StarChart(props) {
     const [days, setDays] = useState({
         sunday: props.week.sunday,
@@ -28,8 +30,10 @@ export function StarChart(props) {
         console.log(day);
         console.log('state value', days[day])
         if (days[day] === false) {
+            updateStars(props.userId,"+",1);
             setDays({ ...days, [day]: true });
         } if (days[day] === true) {            
+            updateStars(props.userId,"-",1);
             setDays({ ...days, [day]: false });
         }  
 
@@ -44,7 +48,7 @@ export function StarChart(props) {
                 friday: days[day],
                 saturday: days[day]
             },
-            _id: props.id
+            _id: props.habitId
         })
         .then(console.log('days updateAPI', days))
         .catch(err => console.log(err));
