@@ -35,9 +35,9 @@ function CreateHabitForm() {
     [state]
   )
 
-  useEffect(() => {
-    console.log("use effect formInput",formInput);
-  },[formInput]);
+  // useEffect(() => {
+    // console.log("use effect formInput",formInput);
+  // },[formInput]);
   
   // useEffect(()=> {console.log("forminput",formInput)},[formInput]);
   const handleChange = newValue => {
@@ -51,8 +51,8 @@ function CreateHabitForm() {
     // console.log("handleSubmit href",href);
 
     if (state.currentHabit._id === undefined) {
-      console.log("createing new - form",formInput)
 
+      console.log("createing new - form",formInput)
       API.saveHabit({
         date: new Date(Date.now()),
         userId: "userId1",

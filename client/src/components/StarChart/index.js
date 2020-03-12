@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import { UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actions";
 import API from "../../utils/API";
 import GoldStar from '../GoldStarOfficial';
-import DayOfWk from '../DayOfWk';
 import GreyStar from '../GreyStarOfficial';
+import GreyStarSu from '../GreyStarOfficial/Su';
+import GreyStarMo from '../GreyStarOfficial/Mo';
+import GreyStarTu from '../GreyStarOfficial/Tu';
+import GreyStarWe from '../GreyStarOfficial/We';
+import GreyStarTh from '../GreyStarOfficial/Th';
+import GreyStarFr from '../GreyStarOfficial/Fr';
+import GreyStarSa from '../GreyStarOfficial/Sa';
 
 export function StarChart(props) {
     const [days, setDays] = useState({
@@ -16,7 +22,7 @@ export function StarChart(props) {
         saturday: props.week.saturday
     });
 
-    console.log('props', props);
+    // console.log('starchar props', props);
 
     const handleClick = (day) => {
         console.log(day);
@@ -26,9 +32,8 @@ export function StarChart(props) {
         } if (days[day] === true) {            
             setDays({ ...days, [day]: false });
         }  
-  
 
-        console.log("Updating existing", days[day])
+        // console.log("Updating existing", days[day])
         API.updateHabit({
             week: {
                 sunday: days[day],
@@ -59,49 +64,49 @@ export function StarChart(props) {
                                 {days.sunday ? (
                                     <GoldStar day="sunday" handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="sunday" handleClick={handleClick} />
+                                        <GreyStarSu day="sunday" handleClick={handleClick} />
                                     )}
                             </div>
                             <div className="col s1">
                                 {days.monday ? (
                                     <GoldStar day="monday" handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="monday" handleClick={handleClick} />
+                                        <GreyStarMo day="monday" handleClick={handleClick} />
                                     )}
                             </div>
                             <div className="col s1">
                                 {days.tuesday ? (
                                     <GoldStar day='tuesday' handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="tuesday" handleClick={handleClick} />
+                                        <GreyStarTu day="tuesday" handleClick={handleClick} />
                                     )}
                             </div>
                             <div className="col s1">
                                 {days.wednesday ? (
                                     <GoldStar day='wednesday' handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="wednesday" handleClick={handleClick} />
+                                        <GreyStarWe day="wednesday" handleClick={handleClick} />
                                     )}
                             </div>
                             <div className="col s1">
                                 {days.thursday ? (
                                     <GoldStar day='thursday' handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="thursday" handleClick={handleClick} />
+                                        <GreyStarTh day="thursday" handleClick={handleClick} />
                                     )}
                             </div>
                             <div className="col s1">
                                 {days.friday ? (
-                                    <GreyStar day='friday' handleClick={handleClick} />
+                                    <GoldStar day='friday' handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="friday" handleClick={handleClick} />
+                                        <GreyStarFr day="friday" handleClick={handleClick} />
                                     )}
                             </div>
                             <div className="col s1">
                                 {days.saturday ? (
                                     <GoldStar day='saturday' handleClick={handleClick} />
                                 ) : (
-                                        <GreyStar day="saturday" handleClick={handleClick} />
+                                        <GreyStarSa day="saturday" handleClick={handleClick} />
                                     )}
                             </div>
                         </div>
