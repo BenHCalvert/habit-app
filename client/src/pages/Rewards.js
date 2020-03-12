@@ -77,12 +77,12 @@ console.log("rewards : ", state.rewards);
     <Container fluid>
       <Nav/>
       <Row>
-        <h3>Add or redeem reward</h3>
-        {/* <EarnedStars/> */}
+        <h5>You Have ## Stars, <br></br>Add or Redeem A Reward!</h5>
+        {/* <EarneStars/> */}
       </Row>
       <Row>
         { state.rewards.length ? (
-          <table>
+          <table className="rewardtable">
             <thead>
               <tr>
                 <th>Reward</th>

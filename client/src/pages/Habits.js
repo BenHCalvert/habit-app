@@ -88,7 +88,7 @@ console.log("habits : ", state.habits);
       </UserConsumer>
       <Row>
         { state.habits.length ? (
-          <table>
+          <table className="habittable">
             <thead>
               <tr>
                 <th>Habit</th>
