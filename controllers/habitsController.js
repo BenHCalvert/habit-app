@@ -1,7 +1,7 @@
 const db = require("../models");
 
 const options = {
-  setDefaultsOnInsert: true
+  // setDefaultsOnInsert: true
 };
 
 // Defining methods for the habitsController

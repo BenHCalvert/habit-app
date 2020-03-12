@@ -21,7 +21,8 @@ export default {
   },
   // Saves a habit to the database
   saveHabit: function(habitData) {
-    return axios.post("/api/habits/", habitData);
+    console.log("in saveHabit",habitData);
+    return axios.post("/api/habits/",habitData);
   },
   // Gets all rewards
   getRewards: function() {
