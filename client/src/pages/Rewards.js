@@ -8,6 +8,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import EarnedStars from "../components/EarnedStars";
 import Modal from '../components/Modal';
 import RedeemBtn from "../components/RedeemBtn";
+import { UserConsumer } from '../context';
 
 import { useRewardContext } from '../utils/GlobalRewardState';
 import { GET_REWARDS, REMOVE_REWARD, SET_CURRENT_REWARD } from '../utils/actions';
@@ -76,13 +77,16 @@ console.log("rewards : ", state.rewards);
   return (
     <Container fluid>
       <Nav/>
+      <UserConsumer>
+    {({ data }) => (
       <Row>
-        <h3>Add or redeem reward</h3>
-        {/* <EarnedStars/> */}
-      </Row>
+        <h3> {data.user.firstname},</h3><h5>You Have Earned <EarnedStars stars={data.user.stars}/> Stars! <br></br> Add or Redeem A Reward!</h5>
+        {/* <EarneStars/> */}
+      </Row>)}
+    </UserConsumer>
       <Row>
         { state.rewards.length ? (
-          <table>
+          <table className="rewardtable">
             <thead>
               <tr>
                 <th>Reward</th>

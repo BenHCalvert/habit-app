@@ -1,5 +1,5 @@
 .hilite:hover {
-  background-color: #78909c ;
+  background-color: #009688  ;
 }
 
 th, .hilite, td, h3{
@@ -20,8 +20,8 @@ thead {
 }
 
 .row {
- margin-left: 10%;
- margin-right: 10%;
+ margin-left: 5%;
+ margin-right: 5%;
 
 }
 .table {
@@ -29,3 +29,14 @@ thead {
   border-width: 2px;
 }
 
+
+
+.habittable, .rewardtable {
+  border: #78909c ;
+  border-width: 2px;
+  background-color: #78909c;
+}
+
+h3{
+  text-align: center;
+}

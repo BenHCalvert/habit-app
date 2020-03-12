@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHabitContext } from "../../utils/GlobalHabitState";
+import "./style.css";
 import { CREATE_HABIT, UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actions";
 import API from "../../utils/API";
 import AddBtn from "../AddBtn";
 import Input from "../Input";
-import "./style.css";
+
 
 function CreateHabitForm() {
   // let initialState = "";
@@ -111,8 +112,8 @@ function CreateHabitForm() {
   };
 
   return (
-    <div className="habitModal">
-      <h2> What habit to start you?</h2>
+    <div className="habitModal text-black">
+      <h3> What Habit Would You Like To Start?</h3>
       <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
         {/* <Input className="form-control" required ref={habitNameRef} placeholder="Enter Habit (required)"/> */}
           {/* value={state.currentHabit.habitName}  */}
@@ -124,8 +125,8 @@ function CreateHabitForm() {
         {/* <Input name="habitName"  placeholder="Enter Habit (required)" setFormInput={handleChange} formInput={state.currentHabit.habitName}/> */}
         {/* { console.log("render forminput",formInput)} */}
         <Input name="habitName"  placeholder="Enter Habit (required)" setform={handleChange} input={formInput}/>
-        <Input name="weight"  placeholder="weight" setform={handleChange} input={formInput}/>
-        <Input name="dayTotal"  placeholder="dayTotal" setform={handleChange} input={formInput}/>
+        <Input name="weight"  placeholder="Star Worth" setform={handleChange} input={formInput}/>
+        <Input name="dayTotal"  placeholder="Amount of Days" setform={handleChange} input={formInput}/>
         <AddBtn/>
       </form>
     </div>

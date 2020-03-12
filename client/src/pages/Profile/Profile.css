@@ -5,5 +5,28 @@ h1 {
 }
 
  Button {
+     align-items: center;
      text-align: center;
+ }
+
+ h2 {
+    text-align: center;
+    color: white;
+    padding: 5%;
+ }
+
+
+ .accountdiv{
+    text-align: center;
+ }
+ tbody {
+     text-align: center;
+     width: 50%;
+ }
+
+ .infotable{
+     width: 50%;
+     margin-left: 32%;
+     text-align: center;
+     align-items: center;
  }
