@@ -98,7 +98,7 @@ export function StarChart(props) {
                             </div>
                             <div className="col s1">
                                 {days.friday ? (
-                                    <GreyStar day='friday' handleClick={handleClick} />
+                                    <GoldStar day='friday' handleClick={handleClick} />
                                 ) : (
                                         <GreyStarFr day="friday" handleClick={handleClick} />
                                     )}
