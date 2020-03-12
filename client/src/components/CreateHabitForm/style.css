@@ -1,7 +1,8 @@
-.h3 {
+h2 {
+    font-family: cursive;
     color: black;
 }
 
-.habitmodal {
-    background-color: #78909c ;
+.habitModal {
+    /* background-color: #78909c ; */
 }
