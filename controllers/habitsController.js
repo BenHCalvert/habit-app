@@ -1,8 +1,8 @@
 const db = require("../models");
 
-const options = {
+// const options = {
   // setDefaultsOnInsert: true
-};
+// };
 
 // Defining methods for the habitsController
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
   create: function(req, res) {
     console.log("create in controler req",req.body);
     db.Habit
-      .create(req.body, options)
+      .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
