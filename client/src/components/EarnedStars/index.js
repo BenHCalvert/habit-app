@@ -5,7 +5,7 @@ export function EarnedStars(props) {
   return (
     <>
       {/* <img src="./stars.svg" alt="Stars!"/> */}
-      <h5> Earned ## stars</h5>
+      <h5> You have {props.stars} earned!</h5>
     </>
   );
 }

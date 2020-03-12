@@ -12,6 +12,7 @@ class UserProvider extends Component {
         email: "",
         username: "",
         password: "",
+        stars: 0,
         loggedIn: false,
         user: null,
         failureMessage: null
@@ -42,7 +43,7 @@ class UserProvider extends Component {
                         user: user.data.user
                     });
                     console.log("log in successful");
-                    window.location.href = '/habits';
+                    window.location.href = '/profile/';
                 } else {
                     console.log("Something went wrong :(")
                     console.log(user);

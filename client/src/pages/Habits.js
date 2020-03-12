@@ -11,14 +11,17 @@ import StarChart from '../components/StarChart';
 import { UserConsumer } from '../context';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
+import { updateStars, loadStars } from '../utils/StarCountManager';
+
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 import Nav from "../components/Nav";
 
 
 import "./style.css";
 
-function Habits(props) {
+function Habits() {
   const [state, dispatch] = useHabitContext([]);
+  const [starState, setStarState] = useState();
 
   const loadHabits = () => {
     API.getHabits()
@@ -67,25 +70,31 @@ function Habits(props) {
 
   useEffect(() => {
     loadHabits()
+    console.log("here");
   }, [])
-  // }, [state.habits])
+
+  useEffect(() => {
+    // console.log("in use effect for userconsumer");
+    loadHabits()
+  }, [starState])
+
 
 // debug
 console.log("habits : ", state.habits);
+// console.log("stars: ", starState);
 
 // render function
   return (
-   
+
     <Container fluid> 
     <Nav/>
     <UserConsumer>
     {({ data }) => (
       <Row>
-        {/* <h3>Keep up the good work {data.user.firstname} </h3> */}
-        
-        <EarnedStars/>
+        <h3>Keep up the good work {data.user.firstname} </h3>
+        <EarnedStars stars={data.user.stars}/> {/* {setStarState(data.user.stars)} */}
       </Row>)}
-      </UserConsumer>
+    </UserConsumer>
       <Row>
         { state.habits.length ? (
           <table>
@@ -99,7 +108,7 @@ console.log("habits : ", state.habits);
             </thead>
             <tbody>
               {state.habits.map(habit => (
-                <tr>
+                <tr key={habit._id}>
                   <td className='hilite'>
                     <span className='modal-trigger' data-target='modal1' onClick={() => setCurrentHabit(habit._id)}>
                       {habit.habitName}
@@ -109,6 +118,16 @@ console.log("habits : ", state.habits);
                     {habit.weight}
                   </td>
                   <td>
+    <UserConsumer>
+          {({ data }) => ( 
+            <>
+              <span onClick={() => updateStars(data.user._id,"+",5)}>add stars </span> 
+              <span onClick={() => updateStars(data.user._id,"-",1)}>minus stars </span> 
+            </>
+          )}
+    </UserConsumer>
+                    {/* <StarChart/> */} 
+                    {/* <span onClick={() => updateStars(username)}>starchart here </span> */}
                     <StarChart week={habit.week} id={habit._id}/>
                   </td>
                   <td>

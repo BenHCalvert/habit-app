@@ -39,8 +39,8 @@ class Modal extends Component {
   }
 
   render() {
-    console.log("model render", this.props.type);
-              console.log("in switch",this.props.type);
+    // console.log("model render", this.props.type);
+              // console.log("in switch",this.props.type);
               let modalContentType = "No Form specified";
               switch (this.props.type) {
               case "habit":   
@@ -55,7 +55,7 @@ class Modal extends Component {
               }
     return (
       <>
-       { console.log("model render return", this.props.type) }
+       {/* { console.log("model render return", this.props.type) } */}
         <div
           ref={Modal => {
             this.Modal = Modal;

@@ -28,7 +28,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         rewards: state.rewards.map(reward => {
-          return reward._id === action._id ? action.reward : reward;
+          return reward._id === action.reward._id ? action.reward : reward;
         }) // replace matched item and returns the array `
       };
 

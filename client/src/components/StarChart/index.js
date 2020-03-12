@@ -16,7 +16,7 @@ export function StarChart(props) {
         saturday: props.week.saturday
     });
 
-    console.log('props', props);
+    // console.log('starchar props', props);
 
     const handleClick = (day) => {
         console.log(day);
@@ -26,9 +26,8 @@ export function StarChart(props) {
         } if (days[day] === true) {            
             setDays({ ...days, [day]: false });
         }  
-  
 
-        console.log("Updating existing", days[day])
+        // console.log("Updating existing", days[day])
         API.updateHabit({
             week: {
                 sunday: days[day],
