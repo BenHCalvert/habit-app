@@ -11,7 +11,6 @@ import StarChart from '../components/StarChart';
 import { UserConsumer } from '../context';
 
 import { useHabitContext } from '../utils/GlobalHabitState';
-import { updateStars, loadStars } from '../utils/StarCountManager';
 
 import { GET_HABITS, REMOVE_HABIT, SET_CURRENT_HABIT } from '../utils/actions';
 import Nav from "../components/Nav";
@@ -121,14 +120,14 @@ console.log("habits : ", state.habits);
     <UserConsumer>
           {({ data }) => ( 
             <>
-              <span onClick={() => updateStars(data.user._id,"+",5)}>add stars </span> 
-              <span onClick={() => updateStars(data.user._id,"-",1)}>minus stars </span> 
+              {/* <span onClick={() => updateStars(data.user._id,"+",5)}>add stars </span>  */}
+              {/* <span onClick={() => updateStars(data.user._id,"-",1)}>minus stars </span>  */}
+              <StarChart week={habit.week} habitId={habit._id} userId={data.user._id}/>
             </>
           )}
     </UserConsumer>
                     {/* <StarChart/> */} 
                     {/* <span onClick={() => updateStars(username)}>starchart here </span> */}
-                    <StarChart week={habit.week} id={habit._id}/>
                   </td>
                   <td>
                     <DeleteBtn onClick={() => deleteHabit(habit._id)}/>
