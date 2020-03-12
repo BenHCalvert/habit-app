@@ -5,6 +5,7 @@ import { Button, Table, Form } from "reactstrap";
 import { Link } from "react-router-dom"
 import Nav from "../../components/Nav";
 import { Row, Container } from "../../components/Grid";
+import EarnedStars from "../../components/EarnedStars";
 
 
 
@@ -50,7 +51,7 @@ function Profile(props) {
                                 <tr>
                                    
                                     <td>Number of Stars</td>
-                                    <td></td>
+                                    <td><EarnedStars stars={data.user.stars}/></td>
                                     {/* <td>@twitter</td> */}
                                 </tr>
                             </tbody>

@@ -91,8 +91,8 @@ console.log("habits : ", state.habits);
     <UserConsumer>
     {({ data }) => (
       <Row>
-        <h3>Keep up the good work {data.user.firstname} </h3>
-        <EarnedStars stars={data.user.stars}/> {/* {setStarState(data.user.stars)} */}
+        <h3>Keep up the good work, {data.user.firstname}! </h3>
+       <h3>You Have Earned <EarnedStars stars={data.user.stars}/> Stars!</h3>{/* {setStarState(data.user.stars)} */}
       </Row>)}
     </UserConsumer>
       <Row>
