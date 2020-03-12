@@ -120,7 +120,7 @@ console.log("rewards : ", state.rewards);
         <span onClick={() => clearCurrentRewardState()}>
           <AddBtnModal/>
         </span>
-        <Modal type="redeem"/>
+        <Modal type="rewards"/>
       </Row>
 </Container>
   );

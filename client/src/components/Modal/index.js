@@ -4,7 +4,6 @@ import M from "materialize-css";
 
 import CreateHabitForm from '../CreateHabitForm';
 import CreateRewardForm from '../CreateRewardForm';
-import RedeemModalContent from '../RedeemModalContent';
 
 class Modal extends Component {
   componentDidMount() {
@@ -39,9 +38,8 @@ class Modal extends Component {
   }
 
   render() {
-    // console.log("model render", this.props.type);
-              // console.log("in switch",this.props.type);
-              let modalContentType = "No Form specified";
+    console.log("model render switch", this.props.type);
+              let modalContentType;
               switch (this.props.type) {
               case "habit":   
                 modalContentType = <CreateHabitForm/>;
@@ -49,9 +47,9 @@ class Modal extends Component {
               case "rewards":
                 modalContentType = <CreateRewardForm/>;
                 break;
-              case "redeem":
-                modalContentType = <RedeemModalContent/>;
-                break;
+              default:
+                modalContentType = "No Form specified";
+                break
               }
     return (
       <>
