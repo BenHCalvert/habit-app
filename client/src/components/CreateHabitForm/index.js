@@ -28,16 +28,16 @@ function CreateHabitForm() {
   },[state.currentHabit]);
   // },[]);
 
-  useEffect(
-    () => {
-      console.log("page reload")
-    },
-    [state]
-  )
+  //useEffect(
+    //() => {
+      //console.log("page reload")
+    //},
+    //[state]
+  //)
 
-  // useEffect(() => {
-    // console.log("use effect formInput",formInput);
-  // },[formInput]);
+ useEffect(() => {
+ console.log("use effect formInput",formInput);
+ },[formInput]);
   
   // useEffect(()=> {console.log("forminput",formInput)},[formInput]);
   const handleChange = newValue => {
