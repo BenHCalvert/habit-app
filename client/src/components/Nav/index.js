@@ -12,7 +12,7 @@ export function Nav() {
             <nav>
                     
                     <div className="nav-wrapper">
-                    <a href="/habits" className="brand-logo">Yourname - Star Chart</a>
+                    <a href="/habits" className="brand-logo"><Link to="/habits">Star Chart</Link></a>
                     <a href="lg" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
 

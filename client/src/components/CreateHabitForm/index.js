@@ -112,8 +112,8 @@ function CreateHabitForm() {
   };
 
   return (
-    <div className="habitModal text-black">
-      <h3> What Habit Would You Like To Start?</h3>
+    <div className="habitModal">
+      <h4> What Habit Would You Like To Start?</h4>
       <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
         {/* <Input className="form-control" required ref={habitNameRef} placeholder="Enter Habit (required)"/> */}
           {/* value={state.currentHabit.habitName}  */}

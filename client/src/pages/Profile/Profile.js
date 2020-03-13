@@ -24,7 +24,7 @@ function Profile(props) {
 
 
                 <h2>Account Info</h2>
-                <br></br>
+                
                 <Form>
                     <Table className="infotable ">
                             <tbody className="infotable">
