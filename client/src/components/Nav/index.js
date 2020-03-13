@@ -12,8 +12,8 @@ export function Nav() {
             <nav>
                     
                     <div className="nav-wrapper">
-                    <a href="/habits" className="brand-logo">Yourname - Star Chart</a>
-                    <a href="lg" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                    <a href="/habits" className="brand-logo"><Link to="/habits">Star Chart</Link></a>
+                    <a href="#!" data-activates= "sidenav-trigger" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
 
                         {/* TODO: How do we link here with React Router? */}
