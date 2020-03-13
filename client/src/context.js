@@ -12,6 +12,7 @@ class UserProvider extends Component {
         email: "",
         username: "",
         password: "",
+        stars: 0,
         loggedIn: false,
         user: null,
         failureMessage: null

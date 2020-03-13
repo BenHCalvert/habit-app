@@ -93,7 +93,7 @@ function CreateRewardForm() {
 
   return (
     <div>
-      <h3> What reward to start you?</h3>
+      <h4> What Reward Would You Like To Add?</h4>
       <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
         {/* <Input className="form-control" required ref={rewardNameRef} placeholder="Enter Reward (required)"/> */}
           {/* value={state.currentReward.rewardName}  */}

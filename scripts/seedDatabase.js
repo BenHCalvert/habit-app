@@ -14,14 +14,32 @@ const habitSeed = [
     userId: "userId1",
     habitName: "Picking ones nose",
     dayTotal: 14,
-    weight: 1 
+    weight: 1,
+    week: {
+      sunday: true,
+      monday: false,
+      tuesday: true,
+      wednesday: true,
+      thursday: true,
+      friday: false,
+      saturday: true
+    }
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     habitName: "Picking ones friends nose",
     dayTotal: 14,
-    weight: 2 
+    weight: 2,
+    week: {
+      sunday: true,
+      monday: true,
+      tuesday: false,
+      wednesday: true,
+      thursday: false,
+      friday: true,
+      saturday: true
+    }
   }
 ];
 
@@ -30,19 +48,19 @@ const rewardSeed = [
     date: new Date(Date.now()),
     userId: "userId1",
     rewardName: "Icecream sandwich",
-    cost: 10 
+    cost: 10
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     rewardName: "3 Beers at one time",
-    cost: 30 
+    cost: 30
   },
   {
     date: new Date(Date.now()),
     userId: "userId1",
     rewardName: "New road bike",
-    cost: 300 
+    cost: 300
   }
 ];
 

@@ -25,10 +25,12 @@ const reducer = (state, action) => {
       };
 
     case UPDATE_REWARD:
+      // console.log("UPDATE REWARD",state.rewards)
       return {
         ...state,
         rewards: state.rewards.map(reward => {
-          return reward._id === action._id ? action.reward : reward;
+          // console.log("reward",reward);
+          return reward._id === action.reward._id ? action.reward : reward;
         }) // replace matched item and returns the array `
       };
 

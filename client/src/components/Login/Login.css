@@ -1,8 +1,19 @@
 .username {
 text-align: center;
 /* font-size: 60px; */
+color: white;
 }
 
 .password {
     text-align: center;
+    color: white;
 }
+
+.loginTitle{
+    text-decoration-color: white;
+}
+
+.loginBtn {
+    text-align: center;
+}
+
