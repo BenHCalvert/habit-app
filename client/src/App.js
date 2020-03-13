@@ -8,7 +8,7 @@ import Profile from "./pages/Profile/Profile";
 import Auth from "./pages/Auth/Auth.js";
 import NoMatch from "./pages/NoMatch";
 import LoginNav from "./components/Nav/LoginNav";
-// import Nav from "./components/Nav";
+import Nav from "./components/Nav";
 import { Container } from 'reactstrap';
 import UserProvider from "./context";
 import { HabitProvider } from "./utils/GlobalHabitState"; 
@@ -20,7 +20,7 @@ function App() {
       <>
         <UserProvider>
         <Router>
-          {/* <Nav/> */}
+          <Nav/>
           <HabitProvider>
             <Switch>
               <Route exact path="/habits" component={Habits}/>            

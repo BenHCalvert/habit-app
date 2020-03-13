@@ -1,9 +1,5 @@
 const db = require("../models");
 
-// const options = {
-  // setDefaultsOnInsert: true
-// };
-
 // Defining methods for the habitsController
 module.exports = {
   findAll: function(req, res) {
@@ -21,16 +17,15 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log("create in controler req",req.body);
     db.Habit
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log("updating in controller",req.body)
+    console.log("updating in controller",req)
     db.Habit
-      .findOneAndUpdate({ _id: req.params.id }, req.body, {new: true})
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHabitContext } from "../../utils/GlobalHabitState";
-import "./style.css";
 import { CREATE_HABIT, UPDATE_HABIT, SET_CURRENT_HABIT } from "../../utils/actions";
 import API from "../../utils/API";
 import AddBtn from "../AddBtn";
 import Input from "../Input";
-
 
 function CreateHabitForm() {
   // let initialState = "";
@@ -28,16 +26,9 @@ function CreateHabitForm() {
   },[state.currentHabit]);
   // },[]);
 
-  //useEffect(
-    //() => {
-      //console.log("page reload")
-    //},
-    //[state]
-  //)
-
- useEffect(() => {
- console.log("use effect formInput",formInput);
- },[formInput]);
+  useEffect(() => {
+    console.log("use effect formInput",formInput);
+  },[formInput]);
   
   // useEffect(()=> {console.log("forminput",formInput)},[formInput]);
   const handleChange = newValue => {
@@ -51,30 +42,21 @@ function CreateHabitForm() {
     // console.log("handleSubmit href",href);
 
     if (state.currentHabit._id === undefined) {
-
       console.log("createing new - form",formInput)
+
       API.saveHabit({
         date: new Date(Date.now()),
         userId: "userId1",
         habitName: formInput.habitName,
         dayTotal: formInput.dayTotal,
-        weight: formInput.weight,
-        week: {
-          sunday: false,
-          monday: false,
-          tuesday: false,
-          wednesday: false,
-          thursday: false,
-          friday: false,
-          saturday: false
-        }
+        weight: formInput.weight
       })
       .then(res => {
         console.log("Habit Saved res",res);
         dispatch({
           type: CREATE_HABIT,
           habit: res.data
-        });       
+        });
       })
       .catch(err => console.log(err));
     } else {
@@ -112,8 +94,8 @@ function CreateHabitForm() {
   };
 
   return (
-    <div className="habitModal">
-      <h4> What Habit Would You Like To Start?</h4>
+    <div>
+      <h3> What habit to start you?</h3>
       <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
         {/* <Input className="form-control" required ref={habitNameRef} placeholder="Enter Habit (required)"/> */}
           {/* value={state.currentHabit.habitName}  */}
@@ -125,8 +107,8 @@ function CreateHabitForm() {
         {/* <Input name="habitName"  placeholder="Enter Habit (required)" setFormInput={handleChange} formInput={state.currentHabit.habitName}/> */}
         {/* { console.log("render forminput",formInput)} */}
         <Input name="habitName"  placeholder="Enter Habit (required)" setform={handleChange} input={formInput}/>
-        <Input name="weight"  placeholder="Star Worth" setform={handleChange} input={formInput}/>
-        <Input name="dayTotal"  placeholder="Amount of Days" setform={handleChange} input={formInput}/>
+        <Input name="weight"  placeholder="weight" setform={handleChange} input={formInput}/>
+        <Input name="dayTotal"  placeholder="dayTotal" setform={handleChange} input={formInput}/>
         <AddBtn/>
       </form>
     </div>

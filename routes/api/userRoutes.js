@@ -50,13 +50,6 @@ router.post("/signup", function(req, res, next) {
   })
 });
 
-// router.put("/updateStarValue", function(req, res, next) {
-//   console.log("/updateStarValue",req)
-//   db.User.findOneAndUpdate({username: req.body.username},{stars: req.body.stars})
-//   })
-//   .then(dbModel => res.json(dbModel))
-//   .catch(err => res.status(422).json(err));
-
 router.get("/unauthorized", function(req, res, next) {
   res.json({
     error: req.flash("error"),

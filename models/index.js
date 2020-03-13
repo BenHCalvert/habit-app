@@ -3,5 +3,5 @@
 module.exports = {
   Habit: require("./habit"),
   Reward: require("./reward"),
-  User: require("./Users")
+  User: require("./users")
 }

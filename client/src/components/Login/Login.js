@@ -7,7 +7,7 @@ function Login(props) {
     return (
         <div>
             
-            <h2 className="loginTitle white-text">Login</h2>
+            <h2 className="loginTitle">Login</h2>
             <hr/>
             <Form>
                 <FormGroup>
@@ -18,11 +18,9 @@ function Login(props) {
                     <Label for="password">Password</Label>
                     <Input type="password" name="password" className="password" placeholder="password" value={props.password} onChange={props.handleInputChange} />
                 </FormGroup>
-        <p className="loginBtn text-center">
-                <Button onClick={props.handleLogin}>Login</Button></p>
-
+                <Button onClick={props.handleLogin} color="primary" block>Login</Button>
                 <p className="signupLink text-center">
-                    <Button href="/signup">Signup</Button>
+                    <Link to="/signup">dont have an account?  Sign up here</Link>
                 </p>
             </Form>
         </div>

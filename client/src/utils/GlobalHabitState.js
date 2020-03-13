@@ -19,7 +19,6 @@ const reducer = (state, action) => {
       };
 
     case CREATE_HABIT:
-      console.log("CREATE_HABIT",action.habit);
       return {
         ...state,
         habits: [action.habit, ...state.habits]
@@ -29,7 +28,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         habits: state.habits.map(habit => {
-          return habit._id === action.habit._id ? action.habit : habit;
+          return habit._id === action._id ? action.habit : habit;
         }) // replace matched item and returns the array `
       };
 
