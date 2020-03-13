@@ -21,12 +21,11 @@ export default {
   },
   // Saves a habit to the database
   saveHabit: function(habitData) {
-    console.log("in saveHabit",habitData);
-    return axios.post("/api/habits/",habitData);
+    return axios.post("/api/habits", habitData);
   },
   // Gets all rewards
   getRewards: function() {
-    return axios.get("/api/rewards/");
+    return axios.get("/api/rewards");
   },
   // Gets the rewards with the given id
   getReward: function(id) {
@@ -45,17 +44,7 @@ export default {
   saveReward: function(rewardsData) {
     return axios.post("/api/rewards",rewardsData);
   },
-  // Gets the rewards with the given id
-  getStars: function(id) {
-    console.log(`util/API/getstars/${id}`)
-    return axios.get("/api/stars/" + id);
-  },
 
-  // used to modify number of stars up or down
-  updateStarValue: function(userData) {
-    console.log(`util/API/stars ${userData._id} stars ${userData.stars} data ${userData}`)
-    return axios.put("/api/stars/" + userData._id, userData);
-  },
   // logs in user
   login: function(loginInfo) {
     return axios.post("/api/users/login", loginInfo);
