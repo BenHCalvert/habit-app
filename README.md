@@ -14,6 +14,9 @@ Additionally the app will be available offline.
   [master branch](https://habit-app-2020.herokuapp.com/)
   
   [staging branch](https://habit-stagingbranch-2020.herokuapp.com/)
+  
+## Project Presentation
+  [Deck] (https://docs.google.com/presentation/d/1_mlJVdxg65p1r3JflWBCoF91WpnnKfLTJiTfajlK7Vk/edit#slide=id.g816c5fc061_0_120)
 
 
 
