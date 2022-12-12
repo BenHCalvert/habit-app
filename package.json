@@ -23,7 +23,7 @@
     "axios": "^0.19.2",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "flash": "^1.1.0",
     "if-env": "^1.0.4",
